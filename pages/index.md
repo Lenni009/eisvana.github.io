@@ -8,7 +8,7 @@ hero:
   actions:
     - theme: brand
       text: Government Portal
-      link: /apps
+      link: /about
     - theme: alt
       text: Wiki
       link: https://nomanssky.fandom.com/wiki/Eisvana
