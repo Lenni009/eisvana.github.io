@@ -21,5 +21,10 @@ export default defineConfig({
 
     sidebar: sidebar(),
     socialLinks: socials(),
+
+    footer: {
+      message: 'Released under the <a href="https://github.com/Eisvana/eisvana.github.io/blob/main/LICENSE">GPLv3 License</a>.',
+      copyright: 'Copyright © 2023-present <a href="https://github.com/Eisvana">Eisvana</a>'
+    }
   }
 })
