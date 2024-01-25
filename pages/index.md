@@ -27,12 +27,12 @@ features:
   - icon: 👫
     title: Community
     details: Our community is from all across the world, united by shared interests and diverse perspectives!
+  - icon: 🏢
+    title: Departments
+    details: Explore the opportunities our departments offer! Specialise in a field of your interest, such as base building or wiki documentation.
   - icon: 📖
     title: Lore
     details: Eisvana has its own lore, adding depth and richness to your experience. It is also open to contributions!
-  - icon: 🏢
-    title: Departments
-    details: Explore the opportunities our departments offer! Specialise in a field of your interest, such as building or wiki documentation.
 ---
 
 <style>
