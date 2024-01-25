@@ -1,7 +1,9 @@
 import type { DefaultTheme } from 'vitepress';
 
+const route = '/about';
+
 export function sidebarAbout(): DefaultTheme.SidebarItem[] {
-  return [
+  const sidebarItems: DefaultTheme.SidebarItem[] = [
     {
       text: 'About Us',
       collapsed: false,
@@ -14,4 +16,10 @@ export function sidebarAbout(): DefaultTheme.SidebarItem[] {
       items: [{ text: 'Services', base: '/services/', link: '/apps' }],
     },
   ];
+
+  for (const sidebarItem of sidebarItems) {
+    sidebarItem.items?.forEach((item) => (item.link = (item.base ? '' : route) + item.link));
+  }
+
+  return sidebarItems;
 }

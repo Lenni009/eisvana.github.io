@@ -29,8 +29,8 @@ export default defineConfig({
     nav: nav(),
 
     sidebar: {
-      '/about/': { base: '/about/', items: sidebarAbout() },
-      '/services/': { base: '/services/', items: sidebarServices() },
+      '/about/': sidebarAbout(),
+      '/services/': sidebarServices(),
     },
     socialLinks: socials(),
 

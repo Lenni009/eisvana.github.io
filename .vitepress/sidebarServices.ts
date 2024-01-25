@@ -1,7 +1,9 @@
 import type { DefaultTheme } from 'vitepress';
 
+const route = '/services';
+
 export function sidebarServices(): DefaultTheme.SidebarItem[] {
-  return [
+  const sidebarItems: DefaultTheme.SidebarItem[] = [
     {
       items: [
         { text: 'Apps', link: '/apps' },
@@ -10,4 +12,10 @@ export function sidebarServices(): DefaultTheme.SidebarItem[] {
       ],
     },
   ];
+
+  for (const sidebarItem of sidebarItems) {
+    sidebarItem.items?.forEach((item) => (item.link = (item.base ? '' : route) + item.link));
+  }
+
+  return sidebarItems;
 }
