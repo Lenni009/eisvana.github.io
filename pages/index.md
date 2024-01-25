@@ -37,7 +37,7 @@ features:
 
 <style>
 :root {
-  --vp-home-hero-image-background-image: radial-gradient(circle, #720099, #280033);
+  --vp-home-hero-image-background-image: radial-gradient(circle, rgba(215,108,186,.75) 0%, rgba(146,53,177,.5) 100%);
   --vp-home-hero-image-filter: blur(44px);
 }
 </style>
