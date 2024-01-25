@@ -35,3 +35,9 @@ features:
     details: Explore the opportunities our departments offer! Specialise in a field of your interest, such as building or wiki documentation.
 ---
 
+<style>
+:root {
+  --vp-home-hero-image-background-image: radial-gradient(circle, #720099, #280033);
+  --vp-home-hero-image-filter: blur(44px);
+}
+</style>
