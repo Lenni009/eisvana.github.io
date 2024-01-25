@@ -14,7 +14,7 @@ export function sidebarServices(): DefaultTheme.SidebarItem[] {
   ];
 
   for (const sidebarItem of sidebarItems) {
-    sidebarItem.items?.forEach((item) => (item.link = (item.base ? '' : route) + item.link));
+    sidebarItem.items?.forEach((item) => (item.base ??= route));
   }
 
   return sidebarItems;

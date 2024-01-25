@@ -13,12 +13,12 @@ export function sidebarAbout(): DefaultTheme.SidebarItem[] {
       ],
     },
     {
-      items: [{ text: 'Services', base: '/services/', link: '/apps' }],
+      items: [{ text: 'Services', base: '/services', link: '/apps' }],
     },
   ];
 
   for (const sidebarItem of sidebarItems) {
-    sidebarItem.items?.forEach((item) => (item.link = (item.base ? '' : route) + item.link));
+    sidebarItem.items?.forEach((item) => (item.base ??= route));
   }
 
   return sidebarItems;
