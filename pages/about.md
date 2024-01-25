@@ -1,6 +1,10 @@
 # About
 
-Eisvana is a civilized space community in the Eissentam galaxy.
+What is Eisvana? Eisvana serves as both a spatial realm within No Man's Sky, as well as the collective name for a civilized space community of players who engage in "living and exploring" within this expanse.
+
+You can join us in Eisvana and explore at your own pace. Whether you want to take snapshots of your adventures, record your discoveries, or simply enjoy the scenery, you are welcome to do so. There is no pressure or obligation to participate in any way.
+
+We look forward to encountering you amidst the stars!
 
 ## Philosophy
 
