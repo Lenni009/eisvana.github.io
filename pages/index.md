@@ -7,8 +7,8 @@ hero:
   tagline: Civilized Space Community in Eissentam
   actions:
     - theme: brand
-      text: Government Portal
-      link: /about
+      text: About Us
+      link: /about/civ
     - theme: alt
       text: Wiki
       link: https://nomanssky.fandom.com/wiki/Eisvana
@@ -37,7 +37,7 @@ features:
 
 <style>
 :root {
-  --vp-home-hero-image-background-image: radial-gradient(circle, rgba(215,108,186,.75) 0%, rgba(146,53,177,.5) 100%);
+  --vp-home-hero-image-background-image: radial-gradient(circle, rgba(215,108,186,.75), rgba(146,53,177,.5));
   --vp-home-hero-image-filter: blur(44px);
 }
 </style>

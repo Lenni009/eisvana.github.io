@@ -1,11 +1,13 @@
-import { sidebar } from './sidebar';
-import { defineConfig } from 'vitepress'
+import { sidebarAbout } from './sidebarAbout';
+import { sidebarServices } from './sidebarServices';
+import { defineConfig } from 'vitepress';
 import { socials } from './socials';
+import { nav } from './nav';
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title: "Eisvana",
-  description: "Eisvana Government Portal",
+  title: 'Eisvana',
+  description: 'Eisvana Government Portal',
   srcDir: 'pages',
   cleanUrls: true,
   head: [
@@ -22,19 +24,20 @@ export default defineConfig({
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     search: {
-      provider: 'local'
+      provider: 'local',
     },
-    nav: [
-      { text: 'Home', link: '/' },
-      { text: 'Wiki', link: 'https://nomanssky.fandom.com/wiki/Eisvana' },
-    ],
+    nav: nav(),
 
-    sidebar: sidebar(),
+    sidebar: {
+      '/about/': { base: '/about/', items: sidebarAbout() },
+      '/services/': { base: '/services/', items: sidebarServices() },
+    },
     socialLinks: socials(),
 
     footer: {
-      message: 'Released under the <a href="https://github.com/Eisvana/eisvana.github.io/blob/main/LICENSE">GPLv3 License</a>.',
-      copyright: 'Copyright © 2023-present <a href="https://github.com/Eisvana">Eisvana</a>'
-    }
-  }
-})
+      message:
+        'Released under the <a href="https://github.com/Eisvana/eisvana.github.io/blob/main/LICENSE">GPLv3 License</a>.',
+      copyright: 'Copyright © 2023-present <a href="https://github.com/Eisvana">Eisvana</a>',
+    },
+  },
+});
