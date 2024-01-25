@@ -21,6 +21,9 @@ export default defineConfig({
   ],
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
+    search: {
+      provider: 'local'
+    },
     nav: [
       { text: 'Home', link: '/' },
       { text: 'Wiki', link: 'https://nomanssky.fandom.com/wiki/Eisvana' },
