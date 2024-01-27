@@ -1,12 +1,17 @@
 {
-	"type": "module",
-	"scripts": {
-		"dev": "vitepress dev",
-		"build": "vitepress build",
-		"preview": "vitepress preview"
-	},
-	"dependencies": {
-		"prettier": "^3.2.4",
-		"vitepress": "^1.0.0-rc.40"
-	}
+  "type": "module",
+  "scripts": {
+    "dev": "vitepress dev",
+    "build": "vitepress build",
+    "preview": "vitepress preview"
+  },
+  "dependencies": {
+    "vitepress": "^1.0.0-rc.40"
+  },
+  "devDependencies": {
+    "@tsconfig/node20": "^20.1.2",
+    "@types/node": "^20.11.7",
+    "@vue/tsconfig": "^0.5.1",
+    "prettier": "^3.2.4"
+  }
 }

@@ -9,6 +9,7 @@ export function sidebarServices(): DefaultTheme.SidebarItem[] {
         { text: 'Apps', link: '/apps' },
         { text: 'Census', link: '/census' },
         { text: 'Links', link: '/links' },
+        { text: 'Applications', link: '/applications' },
       ],
     },
   ];

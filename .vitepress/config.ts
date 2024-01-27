@@ -8,7 +8,6 @@ import { nav } from './nav';
 export default defineConfig({
   title: 'Eisvana',
   description: 'Eisvana Government Portal',
-  srcDir: 'pages',
   cleanUrls: true,
   head: [
     ['meta', { name: 'theme-color', content: '#280033' }],

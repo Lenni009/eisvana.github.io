@@ -21,6 +21,11 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v4
 
+      - name: Add env vars
+        run: |
+          echo -n 'VITE_DISCORD_WEBHOOK=' > .env
+          echo '${{ secrets.DISCORD_WEBHOOK }}' | base64 | tr -d "\n\r" >> .env
+
       - name: Build App
         run: |
           npm ci
