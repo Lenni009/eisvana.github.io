@@ -10,6 +10,7 @@ export function sidebarAbout(): DefaultTheme.SidebarItem[] {
       items: [
         { text: 'The Civ', link: '/civ' },
         { text: 'Departments', link: '/departments' },
+        { text: 'Community', link: '/community/' },
       ],
     },
     {
