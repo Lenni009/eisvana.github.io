@@ -10,11 +10,15 @@ const requestText = ref('');
 const isSending = ref(false);
 const isFailed = ref(false);
 const isSent = ref(false);
+const isIncomplete = ref(false);
 
 async function submit() {
-  if (!contact.value || !requestText.value || !requestType.value) return;
-  isSending.value = true;
   try {
+    if (!contact.value || !requestText.value || !requestType.value) {
+      isIncomplete.value = true;
+      throw new Error();
+    }
+    isSending.value = true;
     await fetch(webhook, {
       method: 'POST',
       body: buildFormData(),
@@ -32,6 +36,7 @@ async function submit() {
   setTimeout(() => {
     isSent.value = false;
     isFailed.value = false;
+    isIncomplete.value = false;
   }, delay);
 }
 
@@ -65,6 +70,7 @@ function buildFormData() {
 }
 
 const buttonText = computed(() => {
+  if (isIncomplete.value) return 'Please fill out all fields';
   if (isSending.value) return 'Sending...';
   if (isFailed.value) return 'Failed!';
   if (isSent.value) return 'Sent!';
@@ -164,6 +170,7 @@ const buttonText = computed(() => {
     border: 1px solid;
     border-color: var(--vp-c-text-1);
     border-radius: var(--border-radius);
+    transition: background-color 0.2s ease;
 
     &.sending {
       pointer-events: none;
