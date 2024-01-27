@@ -2,7 +2,7 @@
 aside: false
 ---
 <script setup>
-import CommunityPage from '../../components/CommunityPage.vue';
+import CommunityPage from '/components/CommunityPage.vue';
 </script>
 
 # Community
