@@ -12,6 +12,6 @@ Related: [Census](./census)
 
 <ContactForm />
 
-<script setup>
+<script setup lang="ts">
 import ContactForm from '../components/ContactForm.vue';
 </script>

@@ -4,6 +4,7 @@ prev:
   link: .
 next: false
 ---
+
 <script setup lang="ts">
 import { eisvanaMembers } from '/variables/members';
 
@@ -11,24 +12,30 @@ import { eisvanaMembers } from '/variables/members';
 const memberName = 'Lenni';
 
 const playerIndex = eisvanaMembers.findIndex((member) => member.name === memberName);
-const medals = eisvanaMembers[playerIndex].medals;
+const playerObj = eisvanaMembers[playerIndex];
+const medals = playerObj.medals;
 </script>
 
-# {{ memberName }}
+# Lenni
 
 ## About Me
+
 Hi, I'm Lenni. I do a lot of coding and a lot of wiki.
 
 ## Gameplay Interests
+
 I do documentation. That means I take tons of screenshots and upload them to the wiki.
 
 ## Departments
+
 I'm the Head Scholar, and also have the Director position in the Bridge Crew. This means I handle all of our political stuff, as well as our wiki.
 
 ## Medals
-<Badge v-for="medal in medals" :type="medal.type" :title="medal.text">{{ medal.icon }}</Badge>
+
+<span v-for="medal in medals" :class="medal.type" :title="medal.text" class="VPBadge"><img :alt="medal.text" :src="medal.icon" class="medal" width="64" /></span>
 
 ## Contact
+
 **Discord**: lenni009
 <br>
 **Reddit**: [u/Lenni009](https://www.reddit.com/user/Lenni009/)

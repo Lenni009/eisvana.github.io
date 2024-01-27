@@ -1,7 +1,8 @@
 ---
 aside: false
 ---
-<script setup>
+
+<script setup lang="ts">
 import CommunityPage from '/components/CommunityPage.vue';
 </script>
 

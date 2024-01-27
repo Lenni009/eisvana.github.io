@@ -7,7 +7,8 @@ const members: DefaultTheme.TeamMember[] = structuredClone(eisvanaMembers).map((
   if (member.medals) {
     const firstThreeMedals = member.medals.slice(0, 3); // NoSonar get first three medals
     const medalHtml = firstThreeMedals.map(
-      (medal) => `<span class="VPBadge ${medal.type}" title="${medal.text}">${medal.icon}</span>`
+      (medal) =>
+        `<span class="VPBadge ${medal.type}" title="${medal.text}"><img alt="${medal.text}" src="${medal.icon}" width="32" /></span>`
     );
     member.desc = `<div class="medals">${medalHtml.join('')}</div>${member.desc}`;
     delete member.medals;

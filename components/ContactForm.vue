@@ -13,6 +13,11 @@ const isSent = ref(false);
 const isIncomplete = ref(false);
 
 async function submit() {
+  const formData = buildFormData();
+  await sendForm(formData);
+}
+
+async function sendForm(formData: FormData) {
   try {
     if (!contact.value || !requestText.value || !requestType.value) {
       isIncomplete.value = true;
@@ -21,7 +26,7 @@ async function submit() {
     isSending.value = true;
     await fetch(webhook, {
       method: 'POST',
-      body: buildFormData(),
+      body: formData,
     });
     isSent.value = true;
     contact.value = '';
