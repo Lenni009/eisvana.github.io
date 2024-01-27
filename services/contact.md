@@ -10,7 +10,6 @@ Citizenship is mandatory for manager positions.
 Related: [Census](./census)
 :::
 
-
 <ContactForm />
 
 <script setup>
