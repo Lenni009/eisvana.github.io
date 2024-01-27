@@ -9,6 +9,7 @@ export default defineConfig({
   title: 'Eisvana',
   description: 'Eisvana Government Portal',
   cleanUrls: true,
+  srcExclude: ['**/README.md'],
   head: [
     ['meta', { name: 'theme-color', content: '#280033' }],
     ['meta', { name: 'msapplication-config', content: '/icons/browserconfig.xml' }],

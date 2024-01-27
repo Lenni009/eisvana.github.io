@@ -3,6 +3,7 @@ name: Build
 run-name: Build Code
 
 on:
+  workflow_dispatch:
   push:
     branches: ['main']
 
