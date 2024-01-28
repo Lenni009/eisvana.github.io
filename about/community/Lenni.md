@@ -4,16 +4,10 @@ prev:
   link: .
 next: false
 ---
-
 <script setup lang="ts">
-import { eisvanaMembers } from '/variables/members';
+import MedalDisplay from '/components/MedalDisplay.vue';
 
-// Enter your name here
-const memberName = 'Lenni';
-
-const playerIndex = eisvanaMembers.findIndex((member) => member.name === memberName);
-const playerObj = eisvanaMembers[playerIndex];
-const medals = playerObj.medals;
+const name = 'Lenni';
 </script>
 
 # Lenni
@@ -32,7 +26,7 @@ I'm the Head Scholar, and also have the Director position in the Bridge Crew. Th
 
 ## Medals
 
-<span v-for="medal in medals" :class="medal.type" :title="medal.text" class="VPBadge"><img :alt="medal.text" :src="medal.icon" class="medal" width="64" /></span>
+<MedalDisplay :name />
 
 ## Contact
 

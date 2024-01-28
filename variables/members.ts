@@ -6,7 +6,7 @@ export const eisvanaMembers: EisvanaMember[] = [
     name: 'Lenni',
     desc: 'Hello World',
     medals: [
-      { type: 'warning', icon: '/icons/apple-touch-icon.png', text: 'hi' },
+      { type: 'warning', icon: '/icons/apple-touch-icon.png', text: 'hi', amount: 32 },
       { type: 'tip', icon: '/icons/apple-touch-icon.png', text: 'hello world' },
       { type: 'info', icon: '/icons/apple-touch-icon.png', text: 'baum' },
       { type: 'danger', icon: '/icons/apple-touch-icon.png', text: 'test' },
