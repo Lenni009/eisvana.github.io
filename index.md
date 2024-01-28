@@ -34,10 +34,3 @@ features:
     title: Lore
     details: Eisvana has its own lore, adding depth and richness to your experience. It is also open to contributions!
 ---
-
-<style>
-:root {
-  --vp-home-hero-image-background-image: radial-gradient(circle, rgba(215,108,186,.75), rgba(146,53,177,.5));
-  --vp-home-hero-image-filter: blur(44px);
-}
-</style>
