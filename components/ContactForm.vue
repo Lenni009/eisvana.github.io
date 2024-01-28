@@ -95,6 +95,7 @@ const buttonText = computed(() => {
         class="select"
       >
         <option value="Message for the Bridge">General Message to the Bridge</option>
+        <option value="Colony Suggestion">Colony Suggestion</option>
         <option value="Wiki Scholars Application">Wiki Scholars Application</option>
         <option value="Builder Collective Application">Builder Collective Application</option>
         <option value="Mentor Application">Mentor Application</option>
