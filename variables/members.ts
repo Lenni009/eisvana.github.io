@@ -6,8 +6,8 @@ export const eisvanaMembers: EisvanaMember[] = [
     name: 'Lenni',
     desc: 'Hello World',
     medals: [
-      { type: 'warning', icon: '/icons/apple-touch-icon.png', text: 'hi', amount: 32 },
       { type: 'tip', icon: '/icons/apple-touch-icon.png', text: 'hello world' },
+      { type: 'warning', icon: '/icons/apple-touch-icon.png', text: 'hi', amount: 32 },
       { type: 'info', icon: '/icons/apple-touch-icon.png', text: 'baum' },
       { type: 'danger', icon: '/icons/apple-touch-icon.png', text: 'test' },
     ],
@@ -24,3 +24,9 @@ export const eisvanaMembers: EisvanaMember[] = [
     desc: 'Boss-Mentor',
   },
 ];
+
+// sorts by amount earned
+// we could also sort by highest achievement or by date earned (unsorted, just append new medals to the array)
+for (const member of eisvanaMembers) {
+  member.medals?.sort((a, b) => (b.amount ?? 1) - (a.amount ?? 1));
+}

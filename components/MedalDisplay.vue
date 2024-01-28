@@ -22,20 +22,12 @@ const medals = playerObj.medals;
       class="medal"
       width="64"
     />
-    <div
-      class="medal-amount"
-    >
-      {{ medal.amount ?? 1 }}x
-    </div>
+    <div class="text-center">{{ medal.amount ?? 1 }}x</div>
   </span>
 </template>
 
 <style scoped lang="scss">
 .medal {
   margin: 0.25rem;
-}
-
-.medal-amount {
-  text-align: center;
 }
 </style>

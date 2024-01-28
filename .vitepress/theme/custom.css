@@ -6,3 +6,7 @@
 html {
   scrollbar-gutter: stable;
 }
+
+.text-center {
+  text-align: center;
+}
