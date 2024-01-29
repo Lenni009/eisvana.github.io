@@ -9,9 +9,6 @@
     "vitepress": "^1.0.0-rc.40"
   },
   "devDependencies": {
-    "@tsconfig/node20": "^20.1.2",
-    "@types/node": "^20.11.7",
-    "@vue/tsconfig": "^0.5.1",
     "prettier": "^3.2.4",
     "sass": "^1.70.0"
   }
