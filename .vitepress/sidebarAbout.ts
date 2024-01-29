@@ -9,6 +9,7 @@ export function sidebarAbout(): DefaultTheme.SidebarItem[] {
       collapsed: false,
       items: [
         { text: 'The Civ', link: '/civ' },
+        { text: 'Discord', link: '/discord' },
         { text: 'Departments', link: '/departments' },
         { text: 'Medals', link: '/medals' },
         { text: 'Community', link: '/community/' },
