@@ -47,7 +47,11 @@ async function onFileChange(e: Event) {
   const files = e.target.files;
   if (!files?.length) return;
 
-  const compressedFiles = Array.from(files).map(compressFile);
+  // I thought I could be smart and just put .map(compressFile) here.
+  // But that function takes 2 parameters, and the map() function gives not only the current value, but also the current index and the whole array.
+  // So when I did it that way, it would start at index 0, and therefore the quality would be 0.
+  // -> use a proper function expression and don't rely on some crazy function execution syntax stuff
+  const compressedFiles = Array.from(files).map((file) => compressFile(file));
 
   isCompressing.value = true;
   images.value = await Promise.all(compressedFiles);
@@ -87,7 +91,7 @@ const text = computed(() => (isCompressing.value ? 'Compressing files...' : unde
 
     <div class="fieldset">
       <SubmitButton
-      :class="{'is-compressing': isCompressing}"
+        :class="{ 'is-compressing': isCompressing }"
         :form-data-array="formData"
         :is-incomplete="isIncomplete"
         :text
