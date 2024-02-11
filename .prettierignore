@@ -1,1 +1,2 @@
-/dist
+/.vitepress/dist
+/.vitepress/cache

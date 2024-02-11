@@ -3,7 +3,8 @@
   "scripts": {
     "dev": "vitepress dev",
     "build": "vitepress build",
-    "preview": "vitepress preview"
+    "preview": "vitepress preview",
+    "format": "prettier --write ."
   },
   "dependencies": {
     "vitepress": "^1.0.0-rc.40"
