@@ -1,8 +1,7 @@
 import type { DefaultTheme } from 'vitepress';
+import { prefixRoute } from '../../logic/routes';
 
-const route = '/services';
-
-export function sidebarServices(): DefaultTheme.SidebarItem[] {
+export function sidebarServices(route: string): DefaultTheme.SidebarItem[] {
   const sidebarItems: DefaultTheme.SidebarItem[] = [
     {
       items: [
@@ -14,9 +13,5 @@ export function sidebarServices(): DefaultTheme.SidebarItem[] {
     },
   ];
 
-  for (const sidebarItem of sidebarItems) {
-    sidebarItem.items?.forEach((item) => (item.base ??= route));
-  }
-
-  return sidebarItems;
+  return prefixRoute(sidebarItems, route);
 }
