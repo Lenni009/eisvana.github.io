@@ -78,7 +78,7 @@ const text = computed(() => (isCompressing.value ? 'Compressing files...' : unde
   />
 
   <form
-    class="eisvana-form"
+    class="pico"
     ref="form"
     @submit.prevent
   >

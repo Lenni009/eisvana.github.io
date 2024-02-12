@@ -1,3 +1,7 @@
+@use '@picocss/pico/scss/pico' with (
+  $parent-selector: '.pico'
+);
+
 :root {
   --vp-home-hero-image-background-image: radial-gradient(circle, rgba(215, 108, 186, 0.75), rgba(146, 53, 177, 0.5));
   --vp-home-hero-image-filter: blur(44px);
@@ -9,93 +13,4 @@ html {
 
 .text-center {
   text-align: center;
-}
-
-.eisvana-form {
-  --border-radius: 5px;
-  --outline-color: rgb(135, 211, 236);
-  display: flex;
-  flex-direction: column;
-  border-color: var(--vp-c-text-1);
-  width: 100%;
-
-  & * {
-    font-family: inherit;
-    font-size: inherit;
-  }
-
-  & > * {
-    flex-grow: 1;
-  }
-
-  label {
-    margin-block-end: 3px;
-  }
-
-  input,
-  textarea,
-  select {
-    border: 1px solid;
-    border-radius: var(--border-radius);
-    padding: 0.25rem;
-    padding-inline: 0.5rem;
-
-    &:hover {
-      outline: 1px solid var(--outline-color);
-    }
-  }
-
-  input,
-  textarea {
-    &:focus,
-    &:focus-visible {
-      outline: 2px solid var(--outline-color);
-    }
-  }
-
-  button {
-    padding: 1rem;
-    border: 1px solid;
-    border-color: var(--vp-c-text-1);
-    border-radius: var(--border-radius);
-    transition: background-color 0.2s ease;
-
-    &.sending {
-      pointer-events: none;
-    }
-
-    &.is-success {
-      background-color: green !important;
-      color: white !important;
-    }
-
-    &.is-error {
-      background-color: red !important;
-      color: white !important;
-    }
-
-    &:hover {
-      background-color: lightgrey;
-    }
-  }
-
-  .fieldset {
-    margin-block-end: 1rem;
-    display: flex;
-    flex-direction: column;
-
-    & > * {
-      flex-grow: 1;
-    }
-  }
-}
-
-.dark .eisvana-form {
-  input {
-    background-color: #2b2a33;
-  }
-
-  button:hover {
-    background-color: rgb(66, 66, 66);
-  }
 }

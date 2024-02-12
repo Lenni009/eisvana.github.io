@@ -20,7 +20,7 @@ const clearData = () => form.value?.reset();
 
 <template>
   <form
-    class="eisvana-form"
+    class="pico"
     ref="form"
     @submit.prevent
   >
