@@ -89,8 +89,9 @@ const text = computed(() => (isCompressing.value ? 'Compressing files...' : unde
       @change="onFileChange"
     />
 
-    <div class="fieldset">
+    <div>
       <SubmitButton
+        :aria-busy="isCompressing || undefined"
         :class="{ 'is-compressing': isCompressing }"
         :form-data-array="formData"
         :is-incomplete="isIncomplete"

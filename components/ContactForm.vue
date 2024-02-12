@@ -24,7 +24,7 @@ const clearData = () => form.value?.reset();
     ref="form"
     @submit.prevent
   >
-    <div class="fieldset">
+    <div>
       <label>Request Type:</label>
       <select
         v-model="requestType"
@@ -38,20 +38,18 @@ const clearData = () => form.value?.reset();
         <option value="Manager Application">Manager Application</option>
       </select>
     </div>
-    <div class="fieldset">
+    <div>
       <label for="contactName">Your Name:</label>
       <input
         v-model="contact"
-        class="input"
         id="contactName"
         type="text"
       />
     </div>
-    <div class="fieldset">
+    <div>
       <label for="requestText">Your Request:</label>
       <textarea
         v-model="requestText"
-        class="textarea"
         id="requestText"
       ></textarea>
     </div>
