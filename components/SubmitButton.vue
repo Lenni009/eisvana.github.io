@@ -6,6 +6,7 @@ const props = defineProps<{
   webhook: string;
   formDataArray: FormData[];
   isIncomplete: boolean;
+  isBusy?: boolean;
   text?: string;
 }>();
 
@@ -49,12 +50,11 @@ const buttonText = computed(() => {
   return 'Submit';
 });
 
-// TODO: aria-busy is probably overwritten by the parent component. Find a way to handle that properly (use a "is-busy" prop)
 </script>
 
 <template>
   <button
-    :aria-busy="isSending"
+    :aria-busy="isSending || isBusy"
     :class="{ sending: isSending, 'is-error': isFailed, 'is-success': isSent }"
     @click="submit"
   >

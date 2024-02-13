@@ -91,9 +91,9 @@ const text = computed(() => (isCompressing.value ? 'Compressing files...' : unde
 
     <div>
       <SubmitButton
-        :aria-busy="isCompressing || undefined"
         :class="{ 'is-compressing': isCompressing }"
         :form-data-array="formData"
+        :is-busy="isCompressing"
         :is-incomplete="isIncomplete"
         :text
         :webhook
@@ -106,11 +106,5 @@ const text = computed(() => (isCompressing.value ? 'Compressing files...' : unde
 <style scoped>
 .editor {
   margin-block-start: 1rem;
-}
-
-.is-compressing {
-  color: red;
-  background-color: blue;
-  pointer-events: none;
 }
 </style>
