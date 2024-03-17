@@ -33,3 +33,10 @@ html {
     font-size: 1.5rem;
   }
 }
+
+.embed,
+.embed iframe {
+  width: 100% !important;
+  height: auto !important;
+  aspect-ratio: 16 / 9;
+}
