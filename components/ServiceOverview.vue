@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import PicoStyle from './PicoStyle.vue';
-import { reactive } from 'vue';
 
 interface Card {
   title: string;
@@ -9,7 +8,7 @@ interface Card {
   linkText: string;
 }
 
-const cards: Card[] = reactive([
+const cards: Card[] = [
   {
     title: 'Generate System Prefix',
     details: '',
@@ -58,7 +57,7 @@ const cards: Card[] = reactive([
     link: 'https://docs.google.com/spreadsheets/d/1IUxFWcqVa_dJ1RT4aDIHu048qrDWI-TPjSiOzlY2AHg/edit',
     linkText: 'Discovery Spreadsheet',
   },
-]);
+];
 </script>
 
 <template>
