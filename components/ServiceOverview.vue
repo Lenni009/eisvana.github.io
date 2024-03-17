@@ -46,6 +46,18 @@ const cards: Card[] = reactive([
     link: 'https://eisvana.github.io/Random-Eisvana-Glyphs-Generator/',
     linkText: 'Random Eisvana Glyphs',
   },
+  {
+    title: 'Am I in Eisvana?',
+    details: '',
+    link: 'https://eisvana.github.io/amiineisvana/',
+    linkText: 'Eisvana Region Checker',
+  },
+  {
+    title: 'Eisvana Discovery Spreadsheet',
+    details: '',
+    link: 'https://docs.google.com/spreadsheets/d/1IUxFWcqVa_dJ1RT4aDIHu048qrDWI-TPjSiOzlY2AHg/edit',
+    linkText: 'Discovery Spreadsheet',
+  },
 ]);
 </script>
 
