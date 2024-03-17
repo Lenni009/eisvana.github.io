@@ -20,7 +20,7 @@ export function sidebarAbout(route: string): DefaultTheme.SidebarItem[] {
     {
       items: [
         { text: 'Government Portal', base: '/services', link: '/apps' },
-        { text: 'Blogs', base: '/blog', link: '/' },
+        // { text: 'Blogs', base: '/blog', link: '/' },
       ],
     },
   ];
