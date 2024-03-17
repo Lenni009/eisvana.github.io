@@ -11,18 +11,21 @@ export function sidebarAbout(route: string): DefaultTheme.SidebarItem[] {
       items: [
         { text: 'The Civ', link: '/civ' },
         { text: 'Discord', link: '/discord' },
+        { text: 'How to Join', link: '/joining' },
         // { text: 'News', link: '/news' },
         { text: 'Departments', link: '/departments' },
+        { text: 'Rules', link: '/rules' },
+        { text: 'FAQ', link: '/faq' },
         // { text: 'Medals', link: '/medals' },
         // { text: 'Community', link: '/community/' },
       ],
     },
-    {
-      items: [
-        { text: 'Government Portal', base: '/services', link: '/apps' },
-        // { text: 'Blogs', base: '/blog', link: '/' },
-      ],
-    },
+    // {
+    //   items: [
+    //     // { text: 'Government Services', base: '/services', link: '/apps' },
+    //     // { text: 'Blogs', base: '/blog', link: '/' },
+    //   ],
+    // },
   ];
 
   return prefixRoute(sidebarItems, route);
