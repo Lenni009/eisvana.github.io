@@ -103,38 +103,36 @@ const text = computed(() => (isCompressing.value ? 'Compressing files...' : unde
     @onSave="downloadFile"
   />
 
-  <ClientOnly>
-    <PicoStyle>
-      <form
-        ref="form"
-        @submit.prevent
+  <PicoStyle>
+    <form
+      ref="form"
+      @submit.prevent
+    >
+      <label
+        class="drop-container"
+        for="image-upload"
       >
-        <label
-          class="drop-container"
-          for="image-upload"
-        >
-          <span class="drop-title">Add Images</span>
-          <input
-            accept="image/*"
-            id="image-upload"
-            type="file"
-            multiple
-            @change="onFileChange"
-          />
-        </label>
-
-        <SubmitButton
-          :class="{ 'is-compressing': isCompressing }"
-          :form-data-array="formData"
-          :is-busy="isCompressing"
-          :is-incomplete="isIncomplete"
-          :text
-          :webhook
-          @success="clearInputs"
+        <span class="drop-title">Add Images</span>
+        <input
+          accept="image/*"
+          id="image-upload"
+          type="file"
+          multiple
+          @change="onFileChange"
         />
-      </form>
-    </PicoStyle>
-  </ClientOnly>
+      </label>
+
+      <SubmitButton
+        :class="{ 'is-compressing': isCompressing }"
+        :form-data-array="formData"
+        :is-busy="isCompressing"
+        :is-incomplete="isIncomplete"
+        :text
+        :webhook
+        @success="clearInputs"
+      />
+    </form>
+  </PicoStyle>
 </template>
 
 <style scoped lang="scss">

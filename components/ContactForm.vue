@@ -20,48 +20,46 @@ const clearData = () => form.value?.reset();
 </script>
 
 <template>
-  <ClientOnly>
-    <PicoStyle>
-      <form
-        ref="form"
-        @submit.prevent
-      >
-        <div>
-          <label>Request Type:</label>
-          <select
-            v-model="requestType"
-            class="select"
-          >
-            <option value="Message for the Bridge">General Message to the Bridge</option>
-            <option value="Colony Suggestion">Colony Suggestion</option>
-            <option value="Wiki Scholars Application">Wiki Scholars Application</option>
-            <option value="Builder Collective Application">Builder Collective Application</option>
-            <option value="Mentor Application">Mentor Application</option>
-            <option value="Manager Application">Manager Application</option>
-          </select>
-        </div>
-        <div>
-          <label for="contactName">Your Name:</label>
-          <input
-            v-model="contact"
-            id="contactName"
-            type="text"
-          />
-        </div>
-        <div>
-          <label for="requestText">Your Request:</label>
-          <textarea
-            v-model="requestText"
-            id="requestText"
-          ></textarea>
-        </div>
-        <SubmitButton
-          :webhook
-          :form-data-array="[formData]"
-          :is-incomplete="isIncomplete"
-          @success="clearData"
+  <PicoStyle>
+    <form
+      ref="form"
+      @submit.prevent
+    >
+      <div>
+        <label>Request Type:</label>
+        <select
+          v-model="requestType"
+          class="select"
+        >
+          <option value="Message for the Bridge">General Message to the Bridge</option>
+          <option value="Colony Suggestion">Colony Suggestion</option>
+          <option value="Wiki Scholars Application">Wiki Scholars Application</option>
+          <option value="Builder Collective Application">Builder Collective Application</option>
+          <option value="Mentor Application">Mentor Application</option>
+          <option value="Manager Application">Manager Application</option>
+        </select>
+      </div>
+      <div>
+        <label for="contactName">Your Username (for contact):</label>
+        <input
+          v-model="contact"
+          id="contactName"
+          type="text"
         />
-      </form>
-    </PicoStyle>
-  </ClientOnly>
+      </div>
+      <div>
+        <label for="requestText">Your Request:</label>
+        <textarea
+          v-model="requestText"
+          id="requestText"
+        ></textarea>
+      </div>
+      <SubmitButton
+        :webhook
+        :form-data-array="[formData]"
+        :is-incomplete="isIncomplete"
+        @success="clearData"
+      />
+    </form>
+  </PicoStyle>
 </template>
