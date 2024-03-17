@@ -7,4 +7,4 @@ Eisvana has developed several apps to simplify our life in the civilisation:
 - [Eisvana System Naming Tools](https://eisvana.github.io/Eisvana-System-Naming-Tools)
 - [Eisvana Census Renewal](https://eisvana.github.io/Eisvana-Census-Renew)
 - [Am I in Eisvana?](https://eisvana.github.io/amiineisvana)
-- [Random Eisvana Glyphs Generator](https://eisvana.github.io/amiinEisvana-Glyphs-Generatoreisvana)
+- [Random Eisvana Glyphs Generator](https://eisvana.github.io/Random-Eisvana-Glyphs-Generator/)
