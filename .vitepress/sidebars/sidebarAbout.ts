@@ -11,13 +11,13 @@ export function sidebarAbout(route: string): DefaultTheme.SidebarItem[] {
       items: [
         { text: 'The Civ', link: '/civ' },
         { text: 'Discord', link: '/discord' },
-        { text: 'How to Join', link: '/joining' },
+        // { text: 'How to Join', link: '/joining' },
         // { text: 'News', link: '/news' },
         { text: 'Departments', link: '/departments' },
-        { text: 'Rules', link: '/rules' },
-        { text: 'FAQ', link: '/faq' },
+        // { text: 'Rules', link: '/rules' },
+        // { text: 'FAQ', link: '/faq' },
         // { text: 'Medals', link: '/medals' },
-        // { text: 'Community', link: '/community/' },
+        { text: 'Community', link: '/community/' },
       ],
     },
     // {

@@ -4,3 +4,5 @@ export interface Medal {
   icon: string;
   amount?: number;
 }
+
+export type AvailableMedals = 'eisvana' | 'test1' | 'test2' | 'warn';
