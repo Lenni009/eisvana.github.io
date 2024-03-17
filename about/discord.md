@@ -4,7 +4,7 @@ import DiscordWidget from '/components/DiscordWidget.vue';
 
 # Discord
 
-Discord is our main communication platform. Join us!
+Discord is our main communication platform. [Join us!](https://discord.gg/Czu3VvjBaa)
 
 <DiscordWidget />
 
