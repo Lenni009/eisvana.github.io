@@ -5,4 +5,3 @@ export interface EisvanaMember extends DefaultTheme.TeamMember {
   medals?: Medal[];
   pageLink?: string;
 }
-
