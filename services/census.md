@@ -4,13 +4,13 @@ The census is an essential tool for helping us understand the development of our
 
 ## Census Table
 
-You can access the census table for Eisvana, a region in the No Man’s Sky video game, by clicking on this link:
+Eisvana's census table can be found here:
 
 [Census - Eisvana](https://nomanssky.fandom.com/wiki/Census_-_Eisvana)
 
 ## Census Form
 
-If you want to be listed on the census and add your information to the table, please fill out this form:
+If you want to be added to the census, please fill out this form:
 
 [Census Form](https://forms.gle/A85N3NkYXkM5XXjx5)
 
