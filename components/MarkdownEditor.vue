@@ -7,6 +7,7 @@ import SubmitButton from './SubmitButton.vue';
 import { buildImageFormData, buildTextFileFormData } from '../logic/createFormData';
 import { compressFile } from '../logic/compressImage';
 import { maxSize } from '../variables/fileCompression';
+import PicoStyle from './PicoStyle.vue';
 
 const pageContent = ref('# Hello World\n\nThis is content');
 const images = ref<File[]>([]);
@@ -102,35 +103,38 @@ const text = computed(() => (isCompressing.value ? 'Compressing files...' : unde
     @onSave="downloadFile"
   />
 
-  <form
-    class="pico"
-    ref="form"
-    @submit.prevent
-  >
-    <label
-      class="drop-container"
-      for="image-upload"
-    >
-      <span class="drop-title">Add Images</span>
-      <input
-        accept="image/*"
-        id="image-upload"
-        type="file"
-        multiple
-        @change="onFileChange"
-      />
-    </label>
+  <ClientOnly>
+    <PicoStyle>
+      <form
+        ref="form"
+        @submit.prevent
+      >
+        <label
+          class="drop-container"
+          for="image-upload"
+        >
+          <span class="drop-title">Add Images</span>
+          <input
+            accept="image/*"
+            id="image-upload"
+            type="file"
+            multiple
+            @change="onFileChange"
+          />
+        </label>
 
-    <SubmitButton
-      :class="{ 'is-compressing': isCompressing }"
-      :form-data-array="formData"
-      :is-busy="isCompressing"
-      :is-incomplete="isIncomplete"
-      :text
-      :webhook
-      @success="clearInputs"
-    />
-  </form>
+        <SubmitButton
+          :class="{ 'is-compressing': isCompressing }"
+          :form-data-array="formData"
+          :is-busy="isCompressing"
+          :is-incomplete="isIncomplete"
+          :text
+          :webhook
+          @success="clearInputs"
+        />
+      </form>
+    </PicoStyle>
+  </ClientOnly>
 </template>
 
 <style scoped lang="scss">

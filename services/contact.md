@@ -1,8 +1,5 @@
 <script setup lang="ts">
 import ContactForm from '../components/ContactForm.vue';
-import {usePicoTheme} from '../composables/picoTheme';
-
-usePicoTheme();
 </script>
 
 # Applications / Bridge Contact
