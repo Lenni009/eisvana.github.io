@@ -1,5 +1,5 @@
-import { isEisvanaMember, type EisvanaMember } from '../types/member';
-import { isObject } from './assertion';
+import type { EisvanaMember } from '../types/member';
+import { isEisvanaMember, isObject } from '../types/assertion';
 
 const members = import.meta.glob('./members/*.ts');
 const memberImports = Object.values(members);
