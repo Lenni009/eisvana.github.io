@@ -30,7 +30,7 @@ const cards: Card[] = reactive([
   },
   {
     title: 'Enter a Discovery to the Wiki',
-    details: 'Submit a new discovery to our wiki scholars!',
+    details: 'Submit a new discovery to our Wiki Scholars!',
     link: 'https://eisvana.github.io/Eisvana-Album-Entry/',
     linkText: 'Album Entry App',
   },
