@@ -1,6 +1,6 @@
 # Apps
 
-Eisvana offers several apps:
+Eisvana has developed several apps to simplify our life in the civilisation:
 
 - [Eisvana Wiki Page Creator](https://eisvana.github.io/EisvanaWikiPageCreator)
 - [Eisvana Album Entry](https://eisvana.github.io/Eisvana-Album-Entry)
