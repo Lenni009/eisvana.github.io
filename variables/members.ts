@@ -1,5 +1,5 @@
 import type { EisvanaMember } from '../types/member';
-import { isEisvanaMember, isObject } from '../types/assertion';
+import { isEisvanaMember } from '../types/assertion';
 
 // using `eager` to not get promises, since top-level await throws errors for some reason (not implemented in target browsers, despite target being ESNext)
 const members = import.meta.glob('./members/*.ts', { eager: true, import: 'default' });
