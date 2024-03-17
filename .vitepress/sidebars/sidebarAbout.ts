@@ -23,7 +23,7 @@ export function sidebarAbout(route: string): DefaultTheme.SidebarItem[] {
     },
     // {
     //   items: [
-    //     // { text: 'Government Services', base: '/services', link: '/apps' },
+    //     // { text: 'Government Services', base: '/services', link: '/' },
     //     // { text: 'Blogs', base: '/blog', link: '/' },
     //   ],
     // },

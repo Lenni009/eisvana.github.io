@@ -5,6 +5,7 @@ export function sidebarServices(route: string): DefaultTheme.SidebarItem[] {
   const sidebarItems: DefaultTheme.SidebarItem[] = [
     {
       items: [
+        { text: 'Government Services', link: '/' },
         { text: 'Apps', link: '/apps' },
         { text: 'Census', link: '/census' },
         { text: 'Links', link: '/links' },

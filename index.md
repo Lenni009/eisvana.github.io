@@ -11,7 +11,7 @@ hero:
       link: /about/civ
     - theme: alt
       text: Government Services
-      link: /services/apps
+      link: /services/
     - theme: alt
       text: Wiki
       link: https://nomanssky.fandom.com/wiki/Eisvana
