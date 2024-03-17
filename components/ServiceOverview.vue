@@ -38,8 +38,14 @@ const cards: Card[] = reactive([
     title: 'Apply for a Department',
     details: '',
     link: './contact',
-    linkText: 'Contact Form'
-  }
+    linkText: 'Contact Form',
+  },
+  {
+    title: 'I need somewhere to explore',
+    details: '',
+    link: 'https://eisvana.github.io/Random-Eisvana-Glyphs-Generator/',
+    linkText: 'Random Eisvana Glyphs',
+  },
 ]);
 </script>
 
