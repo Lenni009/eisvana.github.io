@@ -1,5 +1,8 @@
 import type { DefaultTheme } from 'vitepress';
 
+/**
+ * This is the top-right nav
+ */
 export const nav: DefaultTheme.NavItem[] = [
   { text: 'About', link: '/about/civ', activeMatch: '/about/' },
   { text: 'Government Services', link: '/services/apps', activeMatch: '/services/' },

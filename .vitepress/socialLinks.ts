@@ -1,5 +1,8 @@
 import { DefaultTheme } from 'vitepress';
 
+/**
+ * Social links on the top right
+ */
 export const socialLinks: DefaultTheme.SocialLink[] = [
   {
     icon: 'discord',

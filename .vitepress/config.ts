@@ -24,6 +24,9 @@ export default defineConfig({
       provider: 'local',
     },
 
+    /**
+     * Sidebars for the individual sub-routes
+     */
     sidebar: {
       '/about/': sidebarAbout('/about'),
       '/services/': sidebarServices('/services'),
