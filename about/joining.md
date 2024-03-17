@@ -54,3 +54,7 @@ When you have built and uploaded your base, you are ready to fill out our [censu
 ## Share Your Base on Discord
 
 As the final step, take a picture of your base and send it into the **#eisvana-bases-farms** channel in our Discord server. Your census entry cannot be created without a picture of the base.
+
+## After becoming a Citizen
+
+When you are a citizen, you can join one of our [departments](./departments), or create your own and become a manager.
