@@ -10,6 +10,9 @@ hero:
       text: About Us
       link: /about/civ
     - theme: alt
+      text: Government Services
+      link: /services/apps
+    - theme: alt
       text: Wiki
       link: https://nomanssky.fandom.com/wiki/Eisvana
     - theme: alt
