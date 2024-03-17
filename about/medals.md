@@ -1,7 +1,9 @@
+<script setup lang="ts">
+  import MedalTable from '../components/MedalTable.vue'
+  </script>
+
 # Medals
 
 Here is a collection of medals:
 
-| Medal Image                       | Achievement           |
-| --------------------------------- | --------------------- |
-| ![BadSquid](/images/badsquid.png) | Fail to buy an exotic |
+<MedalTable />
