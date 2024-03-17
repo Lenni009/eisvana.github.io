@@ -49,7 +49,6 @@ const buttonText = computed(() => {
   if (isSent.value) return 'Sent!';
   return 'Submit';
 });
-
 </script>
 
 <template>
