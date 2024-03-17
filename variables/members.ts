@@ -1,4 +1,4 @@
-import { EisvanaMember } from '../types/member';
+import type { EisvanaMember } from '../types/member';
 
 export const eisvanaMembers: EisvanaMember[] = [
   {

@@ -1,5 +1,5 @@
 import type { DefaultTheme } from 'vitepress';
-import { Medal } from './medal';
+import type { Medal } from './medal';
 
 export interface EisvanaMember extends DefaultTheme.TeamMember {
   medals?: Medal[];
