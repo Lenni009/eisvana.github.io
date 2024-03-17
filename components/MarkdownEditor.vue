@@ -6,6 +6,7 @@ import { useData } from 'vitepress';
 import SubmitButton from './SubmitButton.vue';
 import { buildImageFormData, buildTextFileFormData } from '../logic/createFormData';
 import { compressFile } from '../logic/compressImage';
+import { maxSize } from '../variables/fileCompression';
 
 const pageContent = ref('# Hello World\n\nThis is content');
 const images = ref<File[]>([]);
@@ -22,9 +23,13 @@ const theme = computed(() => (isDark.value ? 'dark' : 'light'));
 
 function downloadFile() {
   const element = document.createElement('a');
-  element.href = 'data:text/plain;charset=utf-8,' + encodeURIComponent(pageContent.value);
-  element.download = 'Wikiseite.md';
+  const filename = 'wikiseite.md';
+  const file = new File([pageContent.value], filename, { type: 'text/plain' });
+  const objectUrl = URL.createObjectURL(file);
+  element.href = objectUrl;
+  element.download = filename;
   element.click();
+  URL.revokeObjectURL(objectUrl);
 }
 
 const imageFormData = computed<FormData[]>(() => paginatedImages.value.map((message) => buildImageFormData(message)));
@@ -46,15 +51,35 @@ async function onFileChange(e: Event) {
   if (!(e.target instanceof HTMLInputElement)) return;
   const files = e.target.files;
   if (!files?.length) return;
+  const fileArray = Array.from(files);
 
+  const anyTooLarge = fileArray.some((file) => file.size > maxSize);
+  if (!anyTooLarge) return;
+
+  // --------------------------------------------
+  // This is commented out due to a bug in Firefox that could prevent the files from being processed: https://bugzilla.mozilla.org/show_bug.cgi?id=1885198
+  // --------------------------------------------
   // I thought I could be smart and just put .map(compressFile) here.
   // But that function takes 2 parameters, and the map() function gives not only the current value, but also the current index and the whole array.
   // So when I did it that way, it would start at index 0, and therefore the quality would be 0.
   // -> use a proper function expression and don't rely on some crazy function execution syntax stuff
-  const compressedFiles = Array.from(files).map((file) => compressFile(file));
+  // --------------------------------------------
+  // const compressedFiles = Array.from(files).map((file) => compressFile(file));
+  // --------------------------------------------
 
   isCompressing.value = true;
-  images.value = await Promise.all(compressedFiles);
+
+  const compressedFiles: File[] = [];
+
+  // until that bug is fixed, we are using a regular for loop
+  for (const file of fileArray) {
+    const compressedFile = await compressFile(file);
+    compressedFiles.push(compressedFile);
+  }
+
+  images.value = compressedFiles;
+  // images.value = await Promise.all(compressedFiles);
+
   isCompressing.value = false;
 }
 
@@ -82,29 +107,73 @@ const text = computed(() => (isCompressing.value ? 'Compressing files...' : unde
     ref="form"
     @submit.prevent
   >
-    <input
-      accept="image/*"
-      type="file"
-      multiple
-      @change="onFileChange"
-    />
-
-    <div>
-      <SubmitButton
-        :class="{ 'is-compressing': isCompressing }"
-        :form-data-array="formData"
-        :is-busy="isCompressing"
-        :is-incomplete="isIncomplete"
-        :text
-        :webhook
-        @success="clearInputs"
+    <label
+      class="drop-container"
+      for="image-upload"
+    >
+      <span class="drop-title">Add Images</span>
+      <input
+        accept="image/*"
+        id="image-upload"
+        type="file"
+        multiple
+        @change="onFileChange"
       />
-    </div>
+    </label>
+
+    <SubmitButton
+      :class="{ 'is-compressing': isCompressing }"
+      :form-data-array="formData"
+      :is-busy="isCompressing"
+      :is-incomplete="isIncomplete"
+      :text
+      :webhook
+      @success="clearInputs"
+    />
   </form>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .editor {
-  margin-block-start: 1rem;
+  margin-block: 1rem;
+}
+
+.drop-container {
+  --border-radius: 10px;
+  align-items: center;
+  border: 2px dashed;
+  border-radius: var(--pico-border-radius);
+  cursor: pointer;
+  margin-block-end: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  height: 150px;
+  justify-content: center;
+  transition:
+    background-color 0.2s ease-in-out,
+    border 0.2s ease-in-out;
+
+  &.drag-active,
+  &:hover {
+    border: 3px solid;
+  }
+
+  .drop-title {
+    font-weight: 700;
+    text-align: center;
+  }
+
+  input[type='file'] {
+    border: 1px solid;
+    border-radius: var(--pico-border-radius);
+    height: auto;
+    padding: 5px;
+    width: max-content;
+
+    &::file-selector-button {
+      padding: 10px 20px;
+    }
+  }
 }
 </style>
