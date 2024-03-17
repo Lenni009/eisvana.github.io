@@ -1,14 +1,8 @@
 <script setup lang="ts">
 import ContactForm from '../components/ContactForm.vue';
-import { computed, watchEffect } from 'vue';
-import { useData } from 'vitepress';
+import {usePicoTheme} from '../composables/picoTheme';
 
-// TODO this logic is duplicated in "create.md". Find a way to extract it.
-const { isDark } = useData();
-
-const theme = computed(() => (isDark.value ? 'dark' : 'light'));
-
-watchEffect(() => document.documentElement.dataset.theme = theme.value);
+usePicoTheme();
 </script>
 
 # Applications / Bridge Contact
