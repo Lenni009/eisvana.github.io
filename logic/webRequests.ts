@@ -14,6 +14,6 @@ export async function multiRequest(webhook: string, formDataArray: FormData[]) {
     await Promise.all(fetchPromises);
   } catch (error) {
     console.error('An error occurred:', error);
-    throw new Error(error);
+    throw error instanceof Error ? error : new Error('Something went wrong!');
   }
 }
