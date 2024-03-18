@@ -97,4 +97,4 @@ With 14 votes, "Eisvana" has won in a very close race against 6 other name candi
 
 ## The Civ Is Founded (18 September 2023)
 
-After a hefty disagreement and a lot of drama, Eisvana is founded. It doesn't have a name, logo or region in space yet, but the community is actively working on building the civ.
+After a hefty disagreement and a lot of drama, a new civ is founded. It doesn't have a name, logo or region in space yet, but the community is actively working on building the civ.
