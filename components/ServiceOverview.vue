@@ -58,6 +58,8 @@ const cards: Card[] = [
     linkText: 'Renew Census Entry',
   },
 ];
+
+const isExternalLink = (link: string) => link.startsWith('http');
 </script>
 
 <template>
@@ -70,8 +72,8 @@ const cards: Card[] = [
           <p class="details">{{ card.details }}</p>
           <a
             :href="card.link"
-            :rel="card.link.startsWith('http') ? 'noopener noreferrer' : undefined"
-            :target="card.link.startsWith('http') ? '_blank' : undefined"
+            :rel="isExternalLink(card.link) ? 'noopener noreferrer' : undefined"
+            :target="isExternalLink(card.link) ? '_blank' : undefined"
             class="link"
             >{{ card.linkText }}</a
           >
