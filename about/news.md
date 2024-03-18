@@ -62,7 +62,7 @@ After lots of testing, the [Eisvana Wiki Page Creator](https://lenni009.github.i
 
 ## Eisvana's Logo (3 October 2023)
 
-Thanks to Nicki, Eisvana has a logo. It is only semi-official, until we find a capital planet, which will then be put in the final logo. The logo was voted on by the community and won 20 - 7 against a similar logo featuring the atlas orb in the background.
+Thanks to Nicki, Eisvana has a logo now. It is only semi-official, until we find a capital planet, which will then be put in the final logo. The logo was voted on by the community and won 20 - 7 against a similar logo featuring the atlas orb in the background.
 
 ![Interim Eisvana Logo](/images/news/Eisvana_interim_Logo_500px.png)
 
