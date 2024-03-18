@@ -57,6 +57,12 @@ const cards: Card[] = [
     link: 'https://eisvana.github.io/Eisvana-Census-Renew',
     linkText: 'Renew Census Entry',
   },
+  {
+    title: 'Anonymous Feedback',
+    details: "Do you have any feedback for Eisvana's leadership? Send it here and help us improve!",
+    link: 'https://forms.gle/NRBJ8avd7eeVikBZA',
+    linkText: 'Feedback Form',
+  },
 ];
 
 const isExternalLink = (link: string) => link.startsWith('http');
