@@ -3,9 +3,9 @@ aside: false
 ---
 
 <script setup lang="ts">
-import MarkdownEditor from '../components/MarkdownEditor.vue';
+import BlogBuilder from '../components/BlogBuilder.vue';
 </script>
 
 # Create Blog
 
-<MarkdownEditor />
+<BlogBuilder />
