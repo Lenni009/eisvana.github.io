@@ -1,19 +1,22 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue';
+import { ref, computed, watch } from 'vue';
 import { MdEditor } from 'md-editor-v3';
 import 'md-editor-v3/lib/style.css';
 import { useData } from 'vitepress';
 import SubmitButton from './SubmitButton.vue';
 import { buildImageFormData, buildTextFileFormData } from '../logic/createFormData';
 import { compressFile } from '../logic/compressImage';
-import { maxSize } from '../variables/fileCompression';
 import PicoStyle from './PicoStyle.vue';
+import GalleryElement from './GalleryElement.vue';
 
 const pageContent = ref('# Hello World\n\nThis is content');
 const images = ref<File[]>([]);
 const isCompressing = ref(false);
 const isIncomplete = computed(() => !pageContent.value);
-const paginatedImages = computed(() => paginate(images.value));
+const fileNames = computed(() => images.value.map((file) => file.name));
+const usedImages = computed(() => images.value.filter((file) => pageContent.value.includes(file.name)));
+const paginatedImages = computed(() => paginate(usedImages.value));
+const imageObjectUrls = ref<string[]>([]);
 const webhook = atob(import.meta.env.VITE_DISCORD_BLOG_WEBHOOK);
 
 const form = ref<HTMLFormElement | null>(null);
@@ -22,9 +25,19 @@ const { isDark } = useData();
 
 const theme = computed(() => (isDark.value ? 'dark' : 'light'));
 
+watch(images, (newVal, oldVal) => {
+  const newImages = newVal.filter((file) => !oldVal.includes(file));
+  const removedImages = oldVal.filter((file) => !newVal.includes(file));
+  const removedIndices = removedImages.map((file) => oldVal.indexOf(file));
+
+  const newObjectUrls = newImages.map((file) => URL.createObjectURL(file));
+  imageObjectUrls.value = imageObjectUrls.value.filter((_url, idx) => !removedIndices.includes(idx));
+  imageObjectUrls.value.push(...newObjectUrls);
+});
+
 function downloadFile() {
   const element = document.createElement('a');
-  const filename = 'wikiseite.md';
+  const filename = 'blogentry.md';
   const file = new File([pageContent.value], filename, { type: 'text/plain' });
   const objectUrl = URL.createObjectURL(file);
   element.href = objectUrl;
@@ -33,7 +46,7 @@ function downloadFile() {
   URL.revokeObjectURL(objectUrl);
 }
 
-const imageFormData = computed<FormData[]>(() => paginatedImages.value.map((message) => buildImageFormData(message)));
+const imageFormData = computed<FormData[]>(() => paginatedImages.value.map(buildImageFormData));
 const textFormData = computed<FormData>(() => buildTextFileFormData(pageContent.value));
 const formData = computed<FormData[]>(() => [textFormData.value, ...imageFormData.value]);
 
@@ -48,14 +61,13 @@ function paginate(arr: File[]) {
   }, []);
 }
 
-async function onFileChange(e: Event) {
-  if (!(e.target instanceof HTMLInputElement)) return;
-  const files = e.target.files;
-  if (!files?.length) return;
-  const fileArray = Array.from(files);
+const renameFile = (file: File, name: string) => new File([file], name, { type: file.type });
 
-  const anyTooLarge = fileArray.some((file) => file.size > maxSize);
-  if (!anyTooLarge) return;
+async function uploadImg(files: File[]) {
+  // avoid duplicate filenames and remove breaking characters
+  const fileNamesFixed = files
+    .map((file) => renameFile(file, file.name.replaceAll("'", '_')))
+    .map((file) => (fileNames.value.includes(file.name) ? renameFile(file, `${file.name}_1`) : file));
 
   // --------------------------------------------
   // This is commented out due to a bug in Firefox that could prevent the files from being processed: https://bugzilla.mozilla.org/show_bug.cgi?id=1885198
@@ -73,15 +85,15 @@ async function onFileChange(e: Event) {
   const compressedFiles: File[] = [];
 
   // until that bug is fixed, we are using a regular for loop
-  for (const file of fileArray) {
+  for (const file of fileNamesFixed) {
     const compressedFile = await compressFile(file);
     compressedFiles.push(compressedFile);
   }
 
-  images.value = compressedFiles;
   // images.value = await Promise.all(compressedFiles);
 
   isCompressing.value = false;
+  images.value = [...images.value, ...compressedFiles];
 }
 
 const clearInputs = () => {
@@ -89,39 +101,44 @@ const clearInputs = () => {
   form.value?.reset();
 };
 
+function removeImage(file: File) {
+  images.value = images.value.filter((storedFile) => file !== storedFile);
+}
+
 const text = computed(() => (isCompressing.value ? 'Compressing files...' : undefined));
 </script>
 
 <template>
   <MdEditor
     v-model="pageContent"
-    :noUploadImg="true"
     :theme="theme"
     class="editor"
     language="en-US"
-    previewTheme="vuepress"
-    @onSave="downloadFile"
+    previewTheme="github"
+    @on-save="downloadFile"
+    @on-upload-img="uploadImg"
   />
+
+  <div v-if="images.length">
+    <p>These images will be uploaded:</p>
+    <div class="gallery">
+      <GalleryElement
+        v-for="(file, index) in images"
+        :file
+        :index
+        :is-used="usedImages.includes(file)"
+        :key="imageObjectUrls[index]"
+        :url="imageObjectUrls[index]"
+        @remove="removeImage"
+      />
+    </div>
+  </div>
 
   <PicoStyle>
     <form
       ref="form"
       @submit.prevent
     >
-      <label
-        class="drop-container"
-        for="image-upload"
-      >
-        <span class="drop-title">Add Images</span>
-        <input
-          accept="image/*"
-          id="image-upload"
-          type="file"
-          multiple
-          @change="onFileChange"
-        />
-      </label>
-
       <SubmitButton
         :class="{ 'is-compressing': isCompressing }"
         :form-data-array="formData"
@@ -140,42 +157,10 @@ const text = computed(() => (isCompressing.value ? 'Compressing files...' : unde
   margin-block: 1rem;
 }
 
-.drop-container {
-  --border-radius: 10px;
-  align-items: center;
-  border: 2px dashed;
-  border-radius: var(--pico-border-radius);
-  cursor: pointer;
-  margin-block-end: 1rem;
+.gallery {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   gap: 0.5rem;
-  height: 150px;
-  justify-content: center;
-  transition:
-    background-color 0.2s ease-in-out,
-    border 0.2s ease-in-out;
-
-  &.drag-active,
-  &:hover {
-    border: 3px solid;
-  }
-
-  .drop-title {
-    font-weight: 700;
-    text-align: center;
-  }
-
-  input[type='file'] {
-    border: 1px solid;
-    border-radius: var(--pico-border-radius);
-    height: auto;
-    padding: 5px;
-    width: max-content;
-
-    &::file-selector-button {
-      padding: 10px 20px;
-    }
-  }
+  margin-block-end: 1rem;
 }
 </style>
