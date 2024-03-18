@@ -96,6 +96,7 @@ const cards: Card[] = [
     margin-block-start: 1rem;
 
     article {
+      --divider-color: 1px solid rgba(128, 128, 128, 0.212);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -105,23 +106,28 @@ const cards: Card[] = [
         box-shadow: 0px 0px 40px -18px rgba(134, 53, 156, 0.75);
       }
 
+      & > * {
+        margin: -1rem;
+        padding: 1rem;
+      }
+
       .title {
         text-align: center;
         font-size: large;
         font-weight: bold;
         border: none;
-        padding: 0;
+        border-block-end: var(--divider-color);
       }
 
       .details {
-        margin-block-end: 1.5rem;
+        margin-block: 0.5rem;
         white-space: pre-line;
       }
 
       .link {
+        border-block-start: var(--divider-color);
+        display: block;
         text-align: center;
-        margin: -1rem;
-        padding: 1rem;
         transition:
           background-color var(--pico-transition),
           color var(--pico-transition),
