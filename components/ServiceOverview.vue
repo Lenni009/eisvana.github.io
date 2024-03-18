@@ -11,15 +11,9 @@ interface Card {
 const cards: Card[] = [
   {
     title: 'Generate System Prefix',
-    details: '',
+    details: 'Convert glyphs/coords to prefixes and vice versa, or just train renaming in a controlled environment.',
     link: 'https://eisvana.github.io/Eisvana-System-Naming-Tools/',
     linkText: 'System Naming Tools',
-  },
-  {
-    title: 'Renew Census',
-    details: 'The census resets every year.\nRenew your entry here!',
-    link: 'https://eisvana.github.io/Eisvana-Census-Renew',
-    linkText: 'Renew Census Entry',
   },
   {
     title: 'Register a new Base for the Census',
@@ -28,34 +22,40 @@ const cards: Card[] = [
     linkText: 'Census Form',
   },
   {
+    title: 'Apply for a Department',
+    details: 'Want to join a department, or create a new one? Apply here!',
+    link: './contact',
+    linkText: 'Contact Form',
+  },
+  {
     title: 'Enter a Discovery to the Wiki',
     details: 'Submit a new discovery to our Wiki Scholars!',
     link: 'https://eisvana.github.io/Eisvana-Album-Entry/',
     linkText: 'Album Entry App',
   },
   {
-    title: 'Apply for a Department',
-    details: '',
-    link: './contact',
-    linkText: 'Contact Form',
-  },
-  {
-    title: 'I need somewhere to explore',
-    details: '',
-    link: 'https://eisvana.github.io/Random-Eisvana-Glyphs-Generator/',
-    linkText: 'Random Eisvana Glyphs',
+    title: 'Eisvana Discovery Spreadsheet',
+    details: 'Record your findings so they are visible to everyone!',
+    link: 'https://docs.google.com/spreadsheets/d/1IUxFWcqVa_dJ1RT4aDIHu048qrDWI-TPjSiOzlY2AHg/edit',
+    linkText: 'Discovery Spreadsheet',
   },
   {
     title: 'Am I in Eisvana?',
-    details: '',
+    details: 'Not sure whether you are in Eisvana? Get a definitive answer here!',
     link: 'https://eisvana.github.io/amiineisvana/',
     linkText: 'Eisvana Region Checker',
   },
   {
-    title: 'Eisvana Discovery Spreadsheet',
-    details: '',
-    link: 'https://docs.google.com/spreadsheets/d/1IUxFWcqVa_dJ1RT4aDIHu048qrDWI-TPjSiOzlY2AHg/edit',
-    linkText: 'Discovery Spreadsheet',
+    title: 'I need somewhere to explore',
+    details: 'Eisvana contains over 3000 systems. Get glyphs to a random one here!',
+    link: 'https://eisvana.github.io/Random-Eisvana-Glyphs-Generator/',
+    linkText: 'Random Eisvana Glyphs',
+  },
+  {
+    title: 'Renew Census',
+    details: 'The census resets every year.\nRenew your entry here!',
+    link: 'https://eisvana.github.io/Eisvana-Census-Renew',
+    linkText: 'Renew Census Entry',
   },
 ];
 </script>
