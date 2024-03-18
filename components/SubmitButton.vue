@@ -54,9 +54,27 @@ const buttonText = computed(() => {
 <template>
   <button
     :aria-busy="isSending || isBusy"
-    :class="{ sending: isSending, 'is-error': isFailed, 'is-success': isSent }"
+    :disabled="isSending || isBusy"
+    :class="{ 'is-error': isFailed, 'is-success': isSent }"
     @click="submit"
   >
     {{ buttonText }}
   </button>
 </template>
+
+<style scoped lang="scss">
+.is-error,
+.is-success {
+  pointer-events: none;
+}
+
+.is-error {
+  background-color: var(--vp-c-red-3);
+  border-color: var(--vp-c-red-2);
+}
+
+.is-success {
+  background-color: var(--vp-c-green-3);
+  border-color: var(--vp-c-green-2);
+}
+</style>
