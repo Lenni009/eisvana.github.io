@@ -131,7 +131,7 @@ function removeImage(file: File) {
 const text = computed(() => (isCompressing.value ? 'Compressing files...' : undefined));
 
 const insertImage = (file: File) =>
-  (pageContent.value = `${pageContent.value}\n![image](/images/blogs/${file.name})\n`);
+  (pageContent.value = `${pageContent.value}\n![image](/images/blogs/${category.value.replaceAll("'", '').replaceAll(' ', '_')}/${file.name})\n`);
 </script>
 
 <template>
