@@ -64,10 +64,32 @@ function paginate(arr: File[]) {
 const renameFile = (file: File, name: string) => new File([file], name, { type: file.type });
 
 async function uploadImg(files: File[]) {
+  // store all currently known filenames so we can write to them temporarily without affecting the global data
+  const localFileNameCount: Record<string, number> = {};
+  fileNames.value.forEach((name) => {
+    localFileNameCount[name] ??= 0;
+    localFileNameCount[name]++;
+  });
+
+  function makeFileNameUnique(file: File, count: number = 0): File {
+    const fileNameParts = file.name.split('.');
+    const fileExtension = fileNameParts.at(-1);
+    const fileNameWithoutExtension = fileNameParts.slice(0, -1).join('_');
+    const potentialNewName = `${fileNameWithoutExtension}_${count}.${fileExtension}`;
+
+    const name = count ? potentialNewName : file.name;
+
+    const localCount = (localFileNameCount[name] ??= 0);
+    localFileNameCount[name]++;
+    if (!localCount) return renameFile(file, name);
+
+    return makeFileNameUnique(file, localCount);
+  }
+
   // avoid duplicate filenames and remove breaking characters
   const fileNamesFixed = files
-    .map((file) => renameFile(file, file.name.replaceAll("'", '_')))
-    .map((file) => (fileNames.value.includes(file.name) ? renameFile(file, `${file.name}_1`) : file));
+    .map((file) => renameFile(file, file.name.replaceAll("'", '_').replaceAll(' ', '_')))
+    .map((file) => makeFileNameUnique(file)); // this must stay a function call like this, because `makeFileNameUnique` takes two values. See below for more explanation (this happened twice now)
 
   // --------------------------------------------
   // This is commented out due to a bug in Firefox that could prevent the files from being processed: https://bugzilla.mozilla.org/show_bug.cgi?id=1885198

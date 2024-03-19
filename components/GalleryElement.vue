@@ -55,7 +55,7 @@ defineEmits<(e: 'remove', value: File) => void>();
   .file-name {
     text-overflow: ellipsis;
     overflow: hidden;
-    word-wrap: normal;
+    white-space: nowrap;
     margin: 0;
 
     &.is-unused {
