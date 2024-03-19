@@ -1,1 +1,1 @@
-export const maxSize = 25000000; // 25MB, Discord's file size limit
+export const maxSize = 2000000; // 2MB, to keep page load speeds fast
