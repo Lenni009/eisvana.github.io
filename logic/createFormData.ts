@@ -2,7 +2,7 @@ import { unref } from 'vue';
 import type { ContactFormParameters } from '../types/formData';
 
 export function buildTextFileFormData(content: string, category: string) {
-  const file = new File([content], 'blog.md', { type: 'text/plain' });
+  const file = new File([content], `${category.replaceAll("'", '')}.md`, { type: 'text/plain' });
 
   // initialising form data object
   const formData = new FormData();
