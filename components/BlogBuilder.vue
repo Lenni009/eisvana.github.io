@@ -28,6 +28,7 @@ watch(images, (newVal, oldVal) => {
   const newImages = newVal.filter((file) => !oldVal.includes(file));
   const removedImages = oldVal.filter((file) => !newVal.includes(file));
   const removedIndices = removedImages.map((file) => oldVal.indexOf(file));
+  removedIndices.forEach((index) => URL.revokeObjectURL(imageObjectUrls.value[index]));
 
   const newObjectUrls = newImages.map((file) => URL.createObjectURL(file));
   imageObjectUrls.value = imageObjectUrls.value.filter((_url, idx) => !removedIndices.includes(idx));
@@ -119,6 +120,7 @@ async function uploadImg(files: File[]) {
 
 const clearInputs = () => {
   pageContent.value = '';
+  images.value = [];
   form.value?.reset();
 };
 
