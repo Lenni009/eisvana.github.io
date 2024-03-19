@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
 import { multiRequest } from '../logic/webRequests';
+import PicoStyle from './PicoStyle.vue';
 
 const props = defineProps<{
   webhook: string;
@@ -21,7 +22,7 @@ async function submit() {
   try {
     if (props.isIncomplete) {
       isIncomplete.value = true;
-      throw new Error();
+      throw new Error('incomplete');
     }
     isSending.value = true;
     await multiRequest(props.webhook, props.formDataArray);
@@ -31,14 +32,15 @@ async function submit() {
     console.warn('caught error:', error);
     emit('fail');
     isFailed.value = true;
+  } finally {
+    isSending.value = false;
+    const delay = 1500;
+    setTimeout(() => {
+      isSent.value = false;
+      isFailed.value = false;
+      isIncomplete.value = false;
+    }, delay);
   }
-  isSending.value = false;
-  const delay = 1500;
-  setTimeout(() => {
-    isSent.value = false;
-    isFailed.value = false;
-    isIncomplete.value = false;
-  }, delay);
 }
 
 const buttonText = computed(() => {
@@ -52,14 +54,16 @@ const buttonText = computed(() => {
 </script>
 
 <template>
-  <button
-    :aria-busy="isSending || isBusy"
-    :disabled="isSending || isBusy"
-    :class="{ 'is-error': isFailed, 'is-success': isSent }"
-    @click="submit"
-  >
-    {{ buttonText }}
-  </button>
+  <PicoStyle>
+    <button
+      :aria-busy="isSending || isBusy"
+      :class="{ 'is-error': isFailed, 'is-success': isSent }"
+      :disabled="isSending || isBusy"
+      @click="submit"
+    >
+      {{ buttonText }}
+    </button>
+  </PicoStyle>
 </template>
 
 <style scoped lang="scss">

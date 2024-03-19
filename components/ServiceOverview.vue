@@ -69,9 +69,9 @@ const isExternalLink = (link: string) => link.startsWith('http');
 </script>
 
 <template>
-  <PicoStyle>
-    <div class="wrapper">
-      <span class="subtitle">What do you want to do?</span>
+  <div class="wrapper">
+    <span class="subtitle">What do you want to do?</span>
+    <PicoStyle>
       <div class="flex">
         <article v-for="card in cards">
           <h2 class="title">{{ card.title }}</h2>
@@ -85,8 +85,8 @@ const isExternalLink = (link: string) => link.startsWith('http');
           >
         </article>
       </div>
-    </div>
-  </PicoStyle>
+    </PicoStyle>
+  </div>
 </template>
 
 <style scoped lang="scss">
