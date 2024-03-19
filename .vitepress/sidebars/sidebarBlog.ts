@@ -8,9 +8,9 @@ export function sidebarBlog(route: string): DefaultTheme.SidebarItem[] {
         { text: 'Home', link: '/' },
         { text: 'Create Blog', link: '/create' },
         {
-          text: "Yuca's Shipyard",
+          text: "Lenni",
           collapsed: true,
-          items: [{ text: 'Iobay Singer V', link: '/yuca/iobay_singer_v' }],
+          items: [{ text: 'Building this Website', link: '/lenni/building_this_website' }],
         },
       ],
     },
