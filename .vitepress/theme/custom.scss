@@ -40,3 +40,7 @@ html {
   height: auto !important;
   aspect-ratio: 16 / 9;
 }
+
+.edit-info:not(:has(a)) {
+  display: none !important;
+}

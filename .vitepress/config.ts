@@ -24,6 +24,18 @@ export default defineConfig({
       provider: 'local',
     },
 
+    editLink: {
+      pattern: ({ filePath }) => {
+        // only show the link on blog pages that are 3 levels deep (for example blog/lenni/test)
+        const validPathParts = 3;
+        if (filePath.startsWith('blog/') && filePath.split('/').length >= validPathParts) {
+          return `https://github.com/Eisvana/eisvana.github.io/edit/main/${filePath}`;
+        } else {
+          return '';
+        }
+      },
+    },
+
     /**
      * Sidebars for the individual sub-routes
      */
