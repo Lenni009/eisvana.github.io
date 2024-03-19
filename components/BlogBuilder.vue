@@ -2,17 +2,18 @@
 import { ref, computed, watch } from 'vue';
 import { MdEditor } from 'md-editor-v3';
 import 'md-editor-v3/lib/style.css';
-import { useData } from 'vitepress';
 import SubmitButton from './SubmitButton.vue';
 import { buildImageFormData, buildTextFileFormData } from '../logic/createFormData';
 import { compressFile } from '../logic/compressImage';
 import PicoStyle from './PicoStyle.vue';
 import GalleryElement from './GalleryElement.vue';
+import { useTheme } from '../composables/useTheme';
 
 const pageContent = ref('# Hello World\n\nThis is content');
 const images = ref<File[]>([]);
+const category = ref('');
 const isCompressing = ref(false);
-const isIncomplete = computed(() => !pageContent.value);
+const isIncomplete = computed(() => !pageContent.value || !category.value);
 const fileNames = computed(() => images.value.map((file) => file.name));
 const usedImages = computed(() => images.value.filter((file) => pageContent.value.includes(file.name)));
 const paginatedImages = computed(() => paginate(usedImages.value));
@@ -21,9 +22,7 @@ const webhook = atob(import.meta.env.VITE_DISCORD_BLOG_WEBHOOK);
 
 const form = ref<HTMLFormElement | null>(null);
 
-const { isDark } = useData();
-
-const theme = computed(() => (isDark.value ? 'dark' : 'light'));
+const { theme } = useTheme();
 
 watch(images, (newVal, oldVal) => {
   const newImages = newVal.filter((file) => !oldVal.includes(file));
@@ -37,7 +36,7 @@ watch(images, (newVal, oldVal) => {
 
 function downloadFile() {
   const element = document.createElement('a');
-  const filename = 'blogentry.md';
+  const filename = 'blog.md';
   const file = new File([pageContent.value], filename, { type: 'text/plain' });
   const objectUrl = URL.createObjectURL(file);
   element.href = objectUrl;
@@ -47,7 +46,7 @@ function downloadFile() {
 }
 
 const imageFormData = computed<FormData[]>(() => paginatedImages.value.map(buildImageFormData));
-const textFormData = computed<FormData>(() => buildTextFileFormData(pageContent.value));
+const textFormData = computed<FormData>(() => buildTextFileFormData(pageContent.value, category.value));
 const formData = computed<FormData[]>(() => [textFormData.value, ...imageFormData.value]);
 
 function paginate(arr: File[]) {
@@ -128,41 +127,53 @@ function removeImage(file: File) {
 }
 
 const text = computed(() => (isCompressing.value ? 'Compressing files...' : undefined));
+
+const insertImage = (file: File) =>
+  (pageContent.value = `${pageContent.value}\n![image](/images/blogs/${file.name})\n`);
 </script>
 
 <template>
-  <MdEditor
-    v-model="pageContent"
-    :theme="theme"
-    class="editor"
-    language="en-US"
-    previewTheme="github"
-    @on-save="downloadFile"
-    @on-upload-img="uploadImg"
-  />
-
-  <div v-if="images.length">
-    <p>These images will be uploaded:</p>
-    <div class="gallery">
-      <GalleryElement
-        v-for="(file, index) in images"
-        :file
-        :index
-        :is-used="usedImages.includes(file)"
-        :key="imageObjectUrls[index]"
-        :url="imageObjectUrls[index]"
-        @remove="removeImage"
+  <form
+    ref="form"
+    @submit.prevent
+  >
+    <PicoStyle>
+      <label for="category">Category or username under which the post will be listed:</label>
+      <input
+        v-model="category"
+        id="category"
+        type="text"
       />
-    </div>
-  </div>
+    </PicoStyle>
 
-  <PicoStyle>
-    <form
-      ref="form"
-      @submit.prevent
-    >
+    <div v-show="category">
+      <MdEditor
+        v-model="pageContent"
+        :theme="theme"
+        class="editor"
+        language="en-US"
+        previewTheme="github"
+        @on-save="downloadFile"
+        @on-upload-img="uploadImg"
+      />
+
+      <div v-if="images.length">
+        <p>Uploaded images:</p>
+        <div class="gallery">
+          <GalleryElement
+            v-for="(file, index) in images"
+            :file
+            :index
+            :is-used="usedImages.includes(file)"
+            :key="imageObjectUrls[index]"
+            :url="imageObjectUrls[index]"
+            @remove="removeImage(file)"
+            @insert="insertImage(file)"
+          />
+        </div>
+      </div>
+
       <SubmitButton
-        :class="{ 'is-compressing': isCompressing }"
         :form-data-array="formData"
         :is-busy="isCompressing"
         :is-incomplete="isIncomplete"
@@ -170,8 +181,8 @@ const text = computed(() => (isCompressing.value ? 'Compressing files...' : unde
         :webhook
         @success="clearInputs"
       />
-    </form>
-  </PicoStyle>
+    </div>
+  </form>
 </template>
 
 <style scoped lang="scss">

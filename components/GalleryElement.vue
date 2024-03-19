@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import PicoStyle from './PicoStyle.vue';
+
 defineProps<{
   file: File;
   index: number;
@@ -6,19 +8,24 @@ defineProps<{
   isUsed: boolean;
 }>();
 
-defineEmits<(e: 'remove', value: File) => void>();
+defineEmits<{
+  (e: 'remove'): void;
+  (e: 'insert'): void;
+}>();
 </script>
 
 <template>
   <div class="gallery-item">
-    <div class="image-wrapper">
+    <a
+      :href="url"
+      rel="noopener noreferrer"
+      target="_blank"
+    >
       <img
         :alt="file.name"
         :src="url"
-        class="image"
-        @click="$emit('remove', file)"
       />
-    </div>
+    </a>
     <p
       :class="{ 'is-unused': !isUsed }"
       :title="isUsed ? undefined : 'Unused'"
@@ -26,6 +33,26 @@ defineEmits<(e: 'remove', value: File) => void>();
     >
       {{ file.name }}
     </p>
+    <PicoStyle>
+      <div class="button-grid">
+        <button
+          class="primary"
+          title="Insert"
+          type="button"
+          @click="$emit('insert')"
+        >
+          ➕
+        </button>
+        <button
+          class="secondary"
+          title="Remove"
+          type="button"
+          @click="$emit('remove')"
+        >
+          ✖
+        </button>
+      </div>
+    </PicoStyle>
   </div>
 </template>
 
@@ -33,25 +60,12 @@ defineEmits<(e: 'remove', value: File) => void>();
 .gallery-item {
   max-width: 150px;
 
-  .image-wrapper {
-    position: relative;
-    cursor: pointer;
-
-    &::before {
-      opacity: 0;
-      content: '✖';
-      position: absolute;
-      font-size: 2rem;
-      top: 0.5rem;
-      transition: opacity var(--pico-transition);
-      pointer-events: none;
-      color: red;
-    }
-
-    &:hover::before {
-      opacity: 1;
-    }
+  .button-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.25rem;
   }
+
   .file-name {
     text-overflow: ellipsis;
     overflow: hidden;

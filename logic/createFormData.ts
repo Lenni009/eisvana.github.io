@@ -1,12 +1,21 @@
 import { unref } from 'vue';
 import type { ContactFormParameters } from '../types/formData';
 
-export function buildTextFileFormData(content: string) {
+export function buildTextFileFormData(content: string, category: string) {
   const file = new File([content], 'blog.md', { type: 'text/plain' });
 
   // initialising form data object
   const formData = new FormData();
   formData.append('file', file);
+  formData.append(
+    'payload_json',
+    JSON.stringify({
+      content: `Category: ${category}`,
+      allowed_mentions: {
+        parse: [],
+      },
+    })
+  );
 
   return formData;
 }
@@ -31,6 +40,9 @@ export function buildContactFormData({ requestType, requestText, contact }: Cont
   formData.append(
     'payload_json',
     JSON.stringify({
+      allowed_mentions: {
+        parse: [],
+      },
       embeds: [
         {
           title: unref(requestType),
