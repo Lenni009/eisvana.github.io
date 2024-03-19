@@ -1,10 +1,7 @@
 <script setup lang="ts">
-import { useData } from 'vitepress';
-import { computed } from 'vue';
+import { useTheme } from '../composables/useTheme';
 
-const { isDark } = useData();
-
-const theme = computed(() => (isDark.value ? 'dark' : 'light'));
+const { theme } = useTheme();
 </script>
 
 <template>

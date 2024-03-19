@@ -1,10 +1,8 @@
 <script setup lang="ts">
-import { computed, watchEffect } from 'vue';
-import { useData } from 'vitepress';
+import { watchEffect } from 'vue';
+import { useTheme } from '../composables/useTheme';
 
-const { isDark } = useData();
-
-const theme = computed(() => (isDark.value ? 'dark' : 'light'));
+const { theme } = useTheme();
 
 watchEffect(() => (document.documentElement.dataset.theme = theme.value));
 </script>
