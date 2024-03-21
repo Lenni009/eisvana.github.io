@@ -6,6 +6,6 @@ export interface Medal {
   amount?: number;
 }
 
-export type MedalList = Partial<Record<AvailableMedals, Medal>>;
+export type MedalList = Record<AvailableMedals, Medal>;
 
 export type AvailableMedals = 'eisvana' | 'test1' | 'test2' | 'warn';

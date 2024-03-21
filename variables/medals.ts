@@ -1,6 +1,6 @@
-import type { MedalList } from '../types/medals';
+import type { Medal, MedalList } from '../types/medals';
 
-export const medalCategories: Record<string, MedalList> = {
+export const medalCategories: Record<string, Partial<MedalList>> = {
   fauna: {
     warn: { type: 'warning', icon: '/icons/apple-touch-icon.png', text: 'hi', achievement: 'Did stuff' },
     eisvana: {
@@ -19,4 +19,4 @@ export const medalCategories: Record<string, MedalList> = {
 const medalObjects = Object.values(medalCategories);
 const mergedMedalObjects = medalObjects.map(Object.entries).flat(1);
 
-export const medals: MedalList = Object.fromEntries(mergedMedalObjects);
+export const medals = Object.fromEntries<Medal>(mergedMedalObjects);
