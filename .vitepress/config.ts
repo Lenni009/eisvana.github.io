@@ -27,9 +27,16 @@ export default defineConfig({
 
     editLink: {
       pattern: ({ filePath }) => {
+        const communityPath = 'about/community/';
+
         // only show the link on blog pages that are 3 levels deep (for example blog/lenni/test)
         const validPathParts = 3;
-        if (filePath.startsWith('blog/') && filePath.split('/').length >= validPathParts) {
+        if (
+          (filePath.startsWith('blog/') && filePath.split('/').length >= validPathParts) ||
+          (filePath.startsWith(communityPath) &&
+            filePath !== `${communityPath}index.md` &&
+            filePath !== `${communityPath}create.md`)
+        ) {
           return `https://github.com/Eisvana/eisvana.github.io/edit/main/${filePath}`;
         } else {
           return '';
