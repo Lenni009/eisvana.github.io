@@ -1,8 +1,9 @@
 import { maxSize } from '../variables/fileCompression';
 import { imageTypes, compressImage } from 'simple-image-compressor';
+import { escapeFileName } from './fileNameEscape';
 
 export async function compressFile(inputFile: File, quality: number = 1): Promise<File> {
-  const sanitisedFileName = inputFile.name.replaceAll(/['"[\]{}]/g, '_');
+  const sanitisedFileName = escapeFileName(inputFile.name);
   const file = new File([inputFile], sanitisedFileName, { type: inputFile.type });
   if (file.size < maxSize) return file; // if below 25 MB, don't do anything
   const type = imageTypes.WEBP;

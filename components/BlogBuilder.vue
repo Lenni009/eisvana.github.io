@@ -8,6 +8,7 @@ import { compressFile } from '../logic/compressImage';
 import PicoStyle from './PicoStyle.vue';
 import GalleryElement from './GalleryElement.vue';
 import { useTheme } from '../composables/useTheme';
+import { escapeFileName } from '../logic/fileNameEscape';
 
 const pageContent = ref('# Hello World\n\nThis is content');
 const images = ref<File[]>([]);
@@ -18,7 +19,7 @@ const fileNames = computed(() => images.value.map((file) => file.name));
 const usedImages = computed(() => images.value.filter((file) => pageContent.value.includes(file.name)));
 const paginatedImages = computed(() => paginate(usedImages.value));
 const imageObjectUrls = ref<string[]>([]);
-const webhook = atob(import.meta.env.VITE_DISCORD_BLOG_WEBHOOK);
+const webhook = atob(import.meta.env.VITE_DISCORD_BLOG_WEBHOOK ?? '');
 
 const form = ref<HTMLFormElement | null>(null);
 
@@ -88,7 +89,7 @@ async function uploadImg(files: File[]) {
 
   // avoid duplicate filenames and remove breaking characters
   const fileNamesFixed = files
-    .map((file) => renameFile(file, file.name.replaceAll("'", '_').replaceAll(' ', '_')))
+    .map((file) => renameFile(file, escapeFileName(file.name)))
     .map((file) => makeFileNameUnique(file)); // this must stay a function call like this, because `makeFileNameUnique` takes two values. See below for more explanation (this happened twice now)
 
   // --------------------------------------------
@@ -131,7 +132,7 @@ function removeImage(file: File) {
 const text = computed(() => (isCompressing.value ? 'Compressing files...' : undefined));
 
 const insertImage = (file: File) =>
-  (pageContent.value = `${pageContent.value}\n![image](/images/blogs/${category.value.replaceAll("'", '').replaceAll(' ', '_')}/${file.name})\n`);
+  (pageContent.value = `${pageContent.value}\n![image](/images/blogs/${escapeFileName(category.value)}/${file.name})\n`);
 </script>
 
 <template>
