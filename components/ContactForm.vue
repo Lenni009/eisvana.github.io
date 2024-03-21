@@ -4,7 +4,7 @@ import SubmitButton from './SubmitButton.vue';
 import { buildContactFormData } from '../logic/createFormData';
 import PicoStyle from './PicoStyle.vue';
 
-const webhook = atob(import.meta.env.VITE_DISCORD_WEBHOOK ?? '');
+const webhook = atob(import.meta.env.VITE_DISCORD_MESSAGE_WEBHOOK ?? '');
 
 const form = ref<HTMLFormElement | null>(null);
 
