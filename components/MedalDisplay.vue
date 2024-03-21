@@ -7,7 +7,7 @@ const props = defineProps<{
 
 const playerIndex = eisvanaMembers.findIndex((member) => member.name === props.name);
 const playerObj = eisvanaMembers[playerIndex];
-const medals = playerObj.medals;
+const { medals } = playerObj;
 </script>
 
 <template>
