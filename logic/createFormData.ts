@@ -65,12 +65,38 @@ export function buildContactFormData({ requestType, requestText, contact }: Cont
   return formData;
 }
 
-export function buildMixedFormData(name: string, content: string, file: File) {
+export function buildMixedFormData(name: string, shortDesc: string, content: string, file: File) {
   const contentFile = new File([content], `${escapeFileName(name)}.md`, { type: 'text/plain' });
   const formData = new FormData();
 
-  formData.append('content', contentFile);
   formData.append('image', file);
+  formData.append(
+    'payload_json',
+    JSON.stringify({
+      allowed_mentions: {
+        parse: [],
+      },
+      embeds: [
+        {
+          title: 'New Player Page Submission',
+          image: {
+            url: 'attachment://' + file.name,
+          },
+          fields: [
+            {
+              name: 'Name',
+              value: name,
+            },
+            {
+              name: 'Short Description',
+              value: shortDesc,
+            },
+          ],
+        },
+      ],
+    })
+  );
+  if (content) formData.append('content', contentFile);
 
   return formData;
 }
