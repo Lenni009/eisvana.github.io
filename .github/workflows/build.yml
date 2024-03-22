@@ -22,6 +22,11 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v4
 
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.11.0
+
       - name: Add env vars
         run: |
           echo -n 'VITE_DISCORD_MESSAGE_WEBHOOK=' > .env
