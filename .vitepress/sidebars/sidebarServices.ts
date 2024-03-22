@@ -10,6 +10,7 @@ export function sidebarServices(route: string): DefaultTheme.SidebarItem[] {
         { text: 'Census', link: '/census' },
         { text: 'Platforms', link: '/platforms' },
         { text: 'Applications / Contact', link: '/contact' },
+        // { text: 'Feedback', link: '/feedback' },
       ],
     },
   ];
