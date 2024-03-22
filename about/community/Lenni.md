@@ -25,9 +25,9 @@ I do documentation. That means I take tons of screenshots and upload them to the
 
 I'm the Head Scholar, and also have the Director position in the Bridge Crew. This means I handle all of our political stuff, as well as our wiki.
 
-## Medals
+<!-- ## Medals
 
-<MedalDisplay :name />
+<MedalDisplay :name /> -->
 
 ## Contact
 
