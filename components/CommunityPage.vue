@@ -4,6 +4,8 @@ import type { DefaultTheme } from 'vitepress';
 import { eisvanaMembers } from '../variables/members';
 
 const members: DefaultTheme.TeamMember[] = structuredClone(eisvanaMembers).map((member) => {
+  if (!member.avatar.startsWith('http')) member.avatar = `/images/members/${member.avatar}`;
+
   if (member.medals) {
     // TODO: uncomment when medals exist
     // const firstThreeMedals = member.medals.slice(0, 3); // NoSonar get first three medals
@@ -32,17 +34,24 @@ const members: DefaultTheme.TeamMember[] = structuredClone(eisvanaMembers).map((
 </template>
 
 <style scoped lang="scss">
-:deep(.desc) {
-  a {
-    text-decoration-style: solid;
-
-    &:hover {
-      color: var(--vp-c-brand-2);
-    }
+:deep(.profile) {
+  .avatar-img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
   }
 
-  .medals {
-    margin-block-end: 0.25rem;
+  .desc {
+    a {
+      text-decoration-style: solid;
+
+      &:hover {
+        color: var(--vp-c-brand-2);
+      }
+    }
+
+    .medals {
+      margin-block-end: 0.25rem;
+    }
   }
 }
 </style>
