@@ -1,6 +1,6 @@
 # News
 
-## Leadership Structure Expanded (2 January 2024)
+## New Leadership Role: Managers (2 January 2024)
 
 To add another layer of leadership below the Bridge Crew, the "Manager" position is created. The idea is to split each department and other sections of Eisvana into smaller chunks, which can then be overseen by one or potentially multiple people.
 Multiple of these smaller chunks are then combined into one bigger department, which is in turn overseen by one Bridge member. Everyone who has been an active citizen for at least three months can apply for the manager position.
@@ -11,7 +11,7 @@ A paradise planet is wanted for a new EBC project with the working title "Specia
 
 ## Census Reset (1 January 2024)
 
-As every year, the census resets on the first of January. This year, we are using a new the [Eisvana Census Renew](https://eisvana.github.io/Eisvana-Census-Renew/) web app to give people the possibility to renew their census entries.
+As every year, the census resets on the first of January. This year, we are using a new the [Eisvana Census Renew](https://eisvana.github.io/Eisvana-Census-Renew/) web app to give our citizens the possibility to renew their census entries.
 
 ## Eisvana Reaches Double Hub-Status (11 December 2023)
 
@@ -91,7 +91,7 @@ The hunt for the capital region begins after the requirements have been set:
 - Preferrably in the delta quadrant
 - Should have as many "purely-named" regions next to each other
 
-## The Civ Now Has a Name: Eisvana (20 September 2023)
+## New Name: Eisvana (20 September 2023)
 
 With 14 votes, "Eisvana" has won in a very close race against 6 other name candidates. The name was voted on by the community.
 
