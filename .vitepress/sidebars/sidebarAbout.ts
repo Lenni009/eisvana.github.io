@@ -1,8 +1,6 @@
 import type { DefaultTheme } from 'vitepress';
 import { prefixRoute } from '../../logic/routes';
 
-// TODO: Create the commented-out pages
-
 export function sidebarAbout(route: string): DefaultTheme.SidebarItem[] {
   const sidebarItems: DefaultTheme.SidebarItem[] = [
     {
