@@ -11,7 +11,7 @@ You should be a citizen if you are applying for a department.
 <br>
 Citizenship is mandatory for manager positions.
 
-Related: [Census](./census)
+[How to become a citizen](/about/joining)
 :::
 
 ::: info
