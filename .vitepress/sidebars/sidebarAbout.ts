@@ -32,7 +32,7 @@ export function sidebarAbout(route: string): DefaultTheme.SidebarItem[] {
     {
       text: 'Community',
       items: [
-        { text: 'Community', link: '/community/' },
+        { text: 'Citizens', link: '/community/' },
         { text: 'Blogs', base: '/blog', link: '/' },
       ],
     },
