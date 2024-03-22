@@ -49,4 +49,8 @@ As the final step, take a picture of your base and send it into the **#eisvana-b
 
 ## After becoming a Citizen
 
+Citizenship opens up many possibilities in Eisvana.
+
 When you are a citizen, you can join one of our [departments](./departments), or create your own and become a manager.
+
+You can also get listed on the [community](./community/) page, or write about your experience in a [blog](/blog/create).
