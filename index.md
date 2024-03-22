@@ -8,7 +8,7 @@ hero:
   actions:
     - theme: brand
       text: About Us
-      link: /about/civ
+      link: /about/
     - theme: alt
       text: Government Services
       link: /services/
