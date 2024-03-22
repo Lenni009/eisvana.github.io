@@ -8,4 +8,8 @@ import CommunityPage from '/components/CommunityPage.vue';
 
 # Community
 
+Meet Eisvana's community!
+
+If you are a citizen and want to be listed here as well, you can [make your own page](./create)!
+
 <CommunityPage />

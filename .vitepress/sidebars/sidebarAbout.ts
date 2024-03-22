@@ -18,7 +18,7 @@ export function sidebarAbout(route: string): DefaultTheme.SidebarItem[] {
         { text: 'Naming Guidelines', link: '/naming' },
         { text: 'FAQ', link: '/faq' },
         // { text: 'Medals', link: '/medals' },
-        // { text: 'Community', link: '/community/' },
+        { text: 'Community', link: '/community/' },
       ],
     },
     // {

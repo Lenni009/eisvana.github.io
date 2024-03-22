@@ -64,3 +64,13 @@ export function buildContactFormData({ requestType, requestText, contact }: Cont
 
   return formData;
 }
+
+export function buildMixedFormData(name: string, content: string, file: File) {
+  const contentFile = new File([content], `${escapeFileName(name)}.md`, { type: 'text/plain' });
+  const formData = new FormData();
+
+  formData.append('content', contentFile);
+  formData.append('image', file);
+
+  return formData;
+}
