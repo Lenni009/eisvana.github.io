@@ -1,1 +1,1 @@
-export const escapeFileName = (name: string): string => name.replaceAll(/['"[\]{}] /g, '_');
+export const escapeFileName = (name: string): string => name.replaceAll(/['"[\]{} ]/g, '_');
