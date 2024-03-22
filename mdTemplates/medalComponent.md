@@ -1,0 +1,1 @@
+<MedalDisplay :name />

@@ -3,6 +3,7 @@ name: Build
 run-name: Build Code
 
 on:
+  workflow_dispatch:
   push:
     branches: ['main']
 
@@ -10,7 +11,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: "build"
+  group: 'build'
   cancel-in-progress: true
 
 jobs:
@@ -21,16 +22,23 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v4
 
-      - name: Minify Code
-        uses: Lenni009/minify-js@main
-        with:
-          overwrite: true
+      - name: Add env vars
+        run: |
+          echo -n 'VITE_DISCORD_MESSAGE_WEBHOOK=' > .env
+          echo '${{ secrets.DISCORD_MESSAGE_WEBHOOK }}' | base64 | tr -d "\n\r" >> .env
+          echo -n 'VITE_DISCORD_BLOG_WEBHOOK=' >> .env
+          echo '${{ secrets.DISCORD_BLOG_WEBHOOK }}' | base64 | tr -d "\n\r" >> .env
+          echo -n 'VITE_DISCORD_COMMUNITY_WEBHOOK=' >> .env
+          echo '${{ secrets.DISCORD_COMMUNITY_WEBHOOK }}' | base64 | tr -d "\n\r" >> .env
 
-      - run: |
+      - name: Build App
+        run: |
+          npm ci
+          npm run build
+          cd .vitepress/dist
           touch .nojekyll
-          find . -name "*.md" -type f -delete
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: . # The folder the action should deploy.
+          folder: .vitepress/dist # The folder the action should deploy.

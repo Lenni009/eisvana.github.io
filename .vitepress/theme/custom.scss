@@ -1,0 +1,46 @@
+@use '@picocss/pico/scss/pico' with (
+  $theme-color: 'indigo',
+  $parent-selector: '.pico'
+);
+
+@font-face {
+  font-family: 'NMS-Glyphs-Mono';
+  src:
+    local('NMS-Glyphs-Mono'),
+    url('./fonts/NMS-Glyphs-Mono.ttf') format('truetype');
+}
+
+:root {
+  --vp-home-hero-image-background-image: radial-gradient(circle, rgba(215, 108, 186, 0.75), rgba(146, 53, 177, 0.5));
+  --vp-home-hero-image-filter: blur(44px);
+  --pico-color: inherit;
+}
+
+html {
+  scrollbar-gutter: stable;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.glyphs {
+  font-family: NMS-Glyphs-Mono;
+  font-size: 2rem;
+  vertical-align: bottom;
+
+  &.is-small {
+    font-size: 1.5rem;
+  }
+}
+
+.embed,
+.embed iframe {
+  width: 100% !important;
+  height: auto !important;
+  aspect-ratio: 16 / 9;
+}
+
+.edit-info:not(:has(a)) {
+  display: none !important;
+}
