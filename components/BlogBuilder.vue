@@ -150,18 +150,15 @@ const insertImage = (file: File) =>
     </PicoStyle>
 
     <div v-show="category">
-      <ClientOnly>
       <MdEditor
         v-model="pageContent"
         :theme="theme"
         class="editor"
-        editor-id="blogContent"
         language="en-US"
-        preview-theme="github"
+        previewTheme="github"
         @on-save="downloadFile"
         @on-upload-img="uploadImg"
       />
-      </ClientOnly>
 
       <div v-if="images.length">
         <p>Uploaded images:</p>
