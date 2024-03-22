@@ -154,8 +154,9 @@ const insertImage = (file: File) =>
         v-model="pageContent"
         :theme="theme"
         class="editor"
+        editor-id="pageContent"
         language="en-US"
-        previewTheme="github"
+        preview-theme="github"
         @on-save="downloadFile"
         @on-upload-img="uploadImg"
       />
