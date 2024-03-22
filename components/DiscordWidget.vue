@@ -6,10 +6,10 @@ const { theme } = useTheme();
 
 <template>
   <iframe
-    class="discord-widget"
-    title="Eisvana's Discord"
     :src="`https://discord.com/widget?id=812176491617976330&theme=${theme}`"
+    class="discord-widget"
     sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"
+    title="Eisvana's Discord"
   ></iframe>
 </template>
 
