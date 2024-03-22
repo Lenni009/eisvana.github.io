@@ -89,7 +89,7 @@ export function buildMixedFormData(name: string, shortDesc: string, content: str
             },
             {
               name: 'Short Description',
-              value: shortDesc,
+              value: '```' + shortDesc + '```',
             },
           ],
         },
