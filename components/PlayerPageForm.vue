@@ -15,13 +15,13 @@ const { theme } = useTheme();
 const webhook = atob(import.meta.env.VITE_DISCORD_COMMUNITY_WEBHOOK ?? '');
 
 const name = ref('');
+const shortDesc = ref('');
+const profilePic = ref<File | null>(null);
 const about = ref('');
 const interests = ref('');
 const departments = ref('');
 const contact = ref('');
-const profilePic = ref<File>();
 const isCompressing = ref(false);
-const shortDesc = ref('');
 
 const placeholders = {
   about: 'Introduce yourself',
@@ -33,10 +33,13 @@ const placeholders = {
 const form = ref<HTMLFormElement | null>(null);
 
 const isIncomplete = computed(() => !name.value || !profilePic.value || !shortDesc.value);
+const getsFullPage = computed(() => Boolean(about.value || interests.value || departments.value || contact.value));
+
 const formData = computed(getFormData);
 
-const pageContent = computed(
-  () => `${playerHeadText.replace('PLAYERNAME_PLACEHOLDER', name.value)}
+const pageContent = computed(() =>
+  getsFullPage.value
+    ? `${playerHeadText.replace('PLAYERNAME_PLACEHOLDER', name.value)}
 
 # ${name.value}
 
@@ -58,14 +61,14 @@ ${medalComponentText.trim()}
 
 ## Contact
 
-${contact.value}
-`
+${contact.value}`
+    : ''
 );
 
 function getFormData(): FormData {
   // this is necessary so TS doesn't complain about a potentially undefined pic (it's technically right though)
   if (profilePic.value) {
-    return buildMixedFormData(name.value, pageContent.value, profilePic.value);
+    return buildMixedFormData(name.value, shortDesc.value, pageContent.value, profilePic.value);
   } else {
     return new FormData(); // this should never be sent, since the input validation will flag a missing pic as missing info
   }
@@ -89,6 +92,9 @@ const text = computed(() => (isCompressing.value ? 'Compressing files...' : unde
 
 function clearInputs() {
   form.value?.reset();
+  name.value = '';
+  shortDesc.value = '';
+  profilePic.value = null;
   about.value = '';
   interests.value = '';
   departments.value = '';
