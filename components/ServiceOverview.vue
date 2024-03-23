@@ -60,7 +60,7 @@ const cards: Card[] = [
   {
     title: 'Anonymous Feedback',
     details: "Do you have any feedback for Eisvana's leadership? Send it here and help us improve!",
-    link: 'https://forms.gle/NRBJ8avd7eeVikBZA',
+    link: './feedback',
     linkText: 'Feedback Form',
   },
 ];

@@ -15,7 +15,7 @@ Citizenship is mandatory for manager positions.
 :::
 
 ::: info
-For anonymous feedback, use the [Feedback Form](https://forms.gle/NRBJ8avd7eeVikBZA)
+For anonymous feedback, use the [Feedback Form](./feedback)
 :::
 
 <ContactForm />
