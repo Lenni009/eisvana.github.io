@@ -60,6 +60,23 @@ watchEffect(() => (otherFeedback.value = otherFeedback.value?.slice(0, maxLength
 const isFilledOut = computed(() => Object.entries(feedbackData).some((item) => item[1]));
 
 const formData = computed(() => buildFeedbackFormData(feedbackData));
+
+function clearInputs() {
+  experience.value = undefined;
+  find.value = undefined;
+  enjoy.value = undefined;
+  good.value = undefined;
+  bad.value = undefined;
+  project.value = undefined;
+  departments.value = undefined;
+  structure.value = undefined;
+  home.value = undefined;
+  server.value = undefined;
+  transparency.value = undefined;
+  citizenValue.value = undefined;
+  news.value = undefined;
+  otherFeedback.value = undefined;
+}
 </script>
 
 <template>
@@ -208,6 +225,7 @@ const formData = computed(() => buildFeedbackFormData(feedbackData));
         v-if="isFilledOut"
         :webhook
         :form-data-array="[formData]"
+        @success="clearInputs"
       />
     </PicoStyle>
   </form>
