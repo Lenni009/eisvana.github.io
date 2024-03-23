@@ -23,7 +23,11 @@ const focusInput = () => otherInput.value?.focus();
 
 <template>
   <div class="radio-select">
-    <div v-for="(item, id) in items">
+    <label
+      v-for="(item, id) in items"
+      :for="`${name}-${id}`"
+      :key="id"
+    >
       <input
         v-model="model"
         :id="`${name}-${id}`"
@@ -32,13 +36,13 @@ const focusInput = () => otherInput.value?.focus();
         type="radio"
         @click="onDeselect"
       />
-      <label :for="`${name}-${id}`">{{ item }}</label>
-    </div>
+      <span>{{ item }}</span>
+    </label>
     <div
       v-if="other"
       class="radio-select-item-other"
     >
-      <div>
+      <label :for="`${name}-other`">
         <input
           v-model="model"
           :id="`${name}-other`"
@@ -48,8 +52,8 @@ const focusInput = () => otherInput.value?.focus();
           @click="onDeselect"
           @change="focusInput"
         />
-        <label :for="`${name}-other`">Other:</label>
-      </div>
+        <span>Other:</span>
+      </label>
       <input
         v-model="otherValue"
         :id="`${name}-other-input`"
