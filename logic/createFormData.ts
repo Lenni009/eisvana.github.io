@@ -165,7 +165,8 @@ export function buildFeedbackFormData(feedbackData: FeedbackData) {
               value: unref(departments),
             },
             {
-              name: 'How much do you agree with these statements (1-5)',
+              name: 'How much do you agree with these statements? (1-5)',
+              value: '',
             },
             {
               name: "I understand Eisvana's organisational structure",
