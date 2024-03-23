@@ -91,6 +91,7 @@ const formData = computed(() => buildFeedbackFormData(feedbackData));
           <p class="explanation">E.g. building, exploration, documentation, quests, Sentinel fights, PvP, etc.</p>
           <input
             v-model="enjoy"
+            :maxlength="maxLength"
             type="text"
           />
         </article>
@@ -99,6 +100,7 @@ const formData = computed(() => buildFeedbackFormData(feedbackData));
           <p class="title">What does Eisvana do well?</p>
           <input
             v-model="good"
+            :maxlength="maxLength"
             type="text"
           />
         </article>
@@ -107,6 +109,7 @@ const formData = computed(() => buildFeedbackFormData(feedbackData));
           <p class="title">What could be improved?</p>
           <input
             v-model="bad"
+            :maxlength="maxLength"
             type="text"
           />
         </article>
@@ -116,6 +119,7 @@ const formData = computed(() => buildFeedbackFormData(feedbackData));
           <p>What are you passionate about and would like to see us do?</p>
           <input
             v-model="project"
+            :maxlength="maxLength"
             type="text"
           />
         </article>

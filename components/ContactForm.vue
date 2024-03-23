@@ -47,6 +47,7 @@ const clearData = () => form.value?.reset();
         <label for="contactName">Your Username (for contact):</label>
         <input
           v-model="contact"
+          :maxlength="maxLength"
           id="contactName"
           type="text"
         />

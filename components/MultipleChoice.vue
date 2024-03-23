@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { deselect } from '../logic/formHelpers';
+import { maxLength } from '../variables/formValidation';
 
 defineProps<{
   items: Record<string, string>;
@@ -57,6 +58,7 @@ const focusInput = () => otherInput.value?.focus();
       <input
         v-model="otherValue"
         :id="`${name}-other-input`"
+        :maxlength="maxLength"
         class="input-other"
         ref="otherInput"
         type="text"

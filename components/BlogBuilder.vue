@@ -9,6 +9,7 @@ import PicoStyle from './PicoStyle.vue';
 import GalleryElement from './GalleryElement.vue';
 import { useTheme } from '../composables/useTheme';
 import { escapeFileName } from '../logic/fileNameEscape';
+import { maxLength } from '../variables/formValidation';
 
 const pageContent = ref('# Hello World\n\nThis is content');
 const images = ref<File[]>([]);
@@ -144,6 +145,7 @@ const insertImage = (file: File) =>
       <label for="category">Category or username under which the post will be listed:</label>
       <input
         v-model="category"
+        :maxlength="maxLength"
         id="category"
         type="text"
       />
