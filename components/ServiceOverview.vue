@@ -143,7 +143,8 @@ const isExternalLink = (link: string) => link.startsWith('http');
         border-end-end-radius: var(--pico-border-radius);
         border-end-start-radius: var(--pico-border-radius);
 
-        &:hover {
+        &:hover,
+        &:active {
           background-color: var(--pico-primary-hover-background);
           color: white;
           text-decoration-color: var(--pico-primary-hover-background);
