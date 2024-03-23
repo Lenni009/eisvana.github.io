@@ -52,4 +52,17 @@ const onDeselect = (e: Event) => deselect(e, model);
     }
   }
 }
+
+@container (width <= 420px) {
+  .scale-wrapper {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+
+    .scale-item {
+      flex-direction: row-reverse;
+      gap: 1rem;
+    }
+  }
+}
 </style>

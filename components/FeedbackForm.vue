@@ -236,6 +236,10 @@ function clearInputs() {
   flex-direction: column;
   gap: 1.5rem;
 
+  article {
+    container-type: inline-size;
+  }
+
   .title {
     font-weight: bold;
     margin-block-end: 0.5rem;

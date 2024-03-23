@@ -43,7 +43,10 @@ const focusInput = () => otherInput.value?.focus();
       v-if="other"
       class="radio-select-item-other"
     >
-      <label :for="`${name}-other`">
+      <label
+        :for="`${name}-other`"
+        class="other-input-label"
+      >
         <input
           v-model="model"
           :id="`${name}-other`"
@@ -79,9 +82,22 @@ const focusInput = () => otherInput.value?.focus();
     gap: 0.5rem;
     align-items: baseline;
 
+    .other-input-label {
+      white-space: nowrap;
+    }
+
     .input-other {
-      width: auto;
       flex-grow: 1;
+    }
+  }
+}
+
+@container (width <= 420px) {
+  .radio-select {
+    gap: 1rem;
+
+    input[type='radio'] {
+      margin-inline-end: 1rem;
     }
   }
 }
