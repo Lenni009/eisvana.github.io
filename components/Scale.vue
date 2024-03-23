@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { deselect } from '../logic/formHelpers';
+
 defineProps<{
   name: string;
   low: string;
@@ -6,6 +8,8 @@ defineProps<{
 }>();
 
 const model = defineModel({ type: Number });
+
+const onDeselect = (e: Event) => deselect(e, model);
 </script>
 
 <template>
@@ -15,13 +19,14 @@ const model = defineModel({ type: Number });
       v-for="n in 5"
       class="scale-item"
     >
-      <label :for="`${name}${n}`">{{ n }}</label>
+      <label :for="`${name}-${n}`">{{ n }}</label>
       <input
         v-model="model"
         :id="`${name}-${n}`"
         :name
         :value="n"
         type="radio"
+        @click="onDeselect"
       />
     </div>
     <div>{{ high }}</div>
