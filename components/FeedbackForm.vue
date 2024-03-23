@@ -55,6 +55,8 @@ const feedbackData: FeedbackData = reactive({
   otherFeedback,
 });
 
+watchEffect(() => (good.value = good.value?.slice(0, maxLength)));
+watchEffect(() => (bad.value = bad.value?.slice(0, maxLength)));
 watchEffect(() => (otherFeedback.value = otherFeedback.value?.slice(0, maxLength)));
 
 const isFilledOut = computed(() => Object.entries(feedbackData).some((item) => item[1]));
@@ -117,20 +119,12 @@ function clearInputs() {
 
         <article>
           <p class="title">What does Eisvana do well?</p>
-          <input
-            v-model="good"
-            :maxlength="maxLength"
-            type="text"
-          />
+          <CharacterCounterTextarea v-model="good" />
         </article>
 
         <article>
           <p class="title">What could be improved?</p>
-          <input
-            v-model="bad"
-            :maxlength="maxLength"
-            type="text"
-          />
+          <CharacterCounterTextarea v-model="bad" />
         </article>
 
         <article>
