@@ -8,7 +8,7 @@ defineProps<{
 }>();
 
 const model = defineModel({ type: String });
-const otherValue = ref();
+const otherValue = ref("");
 
 function deselect(e: Event) {
   const { target } = e;
