@@ -7,7 +7,7 @@ import SubmitButton from './SubmitButton.vue';
 import CharacterCounterTextarea from './CharacterCounterTextarea.vue';
 import type { FeedbackData } from '../types/formData';
 import { buildFeedbackFormData } from '../logic/createFormData';
-import { maxLength } from '../variables/formValidation';
+import { delay, maxLength } from '../variables/formValidation';
 
 const webhook = atob(import.meta.env.VITE_DISCORD_FEEDBACK_WEBHOOK ?? '');
 
@@ -62,20 +62,22 @@ const isFilledOut = computed(() => Object.entries(feedbackData).some((item) => i
 const formData = computed(() => buildFeedbackFormData(feedbackData));
 
 function clearInputs() {
-  experience.value = undefined;
-  find.value = undefined;
-  enjoy.value = undefined;
-  good.value = undefined;
-  bad.value = undefined;
-  project.value = undefined;
-  departments.value = undefined;
-  structure.value = undefined;
-  home.value = undefined;
-  server.value = undefined;
-  transparency.value = undefined;
-  citizenValue.value = undefined;
-  news.value = undefined;
-  otherFeedback.value = undefined;
+  setTimeout(() => {
+    experience.value = undefined;
+    find.value = undefined;
+    enjoy.value = undefined;
+    good.value = undefined;
+    bad.value = undefined;
+    project.value = undefined;
+    departments.value = undefined;
+    structure.value = undefined;
+    home.value = undefined;
+    server.value = undefined;
+    transparency.value = undefined;
+    citizenValue.value = undefined;
+    news.value = undefined;
+    otherFeedback.value = undefined;
+  }, delay);
 }
 </script>
 
@@ -221,12 +223,15 @@ function clearInputs() {
         </article>
       </div>
 
-      <SubmitButton
-        v-if="isFilledOut"
-        :webhook
-        :form-data-array="[formData]"
-        @success="clearInputs"
-      />
+      <Transition>
+        <div v-if="isFilledOut">
+          <SubmitButton
+            :webhook
+            :form-data-array="[formData]"
+            @success="clearInputs"
+          />
+        </div>
+      </Transition>
     </PicoStyle>
   </form>
 </template>
@@ -245,5 +250,13 @@ function clearInputs() {
       margin: 0;
     }
   }
+}
+
+.v-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.v-leave-to {
+  opacity: 0;
 }
 </style>

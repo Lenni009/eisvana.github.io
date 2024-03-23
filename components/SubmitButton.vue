@@ -2,6 +2,7 @@
 import { computed, ref } from 'vue';
 import { multiRequest } from '../logic/webRequests';
 import PicoStyle from './PicoStyle.vue';
+import { delay } from '../variables/formValidation';
 
 const props = defineProps<{
   webhook: string;
@@ -24,6 +25,8 @@ const isIncomplete = ref(false);
 async function submit() {
   if (isDev && !sendRequest.value) {
     console.log(props.formDataArray);
+    isSent.value = true;
+    emit('success');
     return;
   }
   try {
@@ -41,7 +44,6 @@ async function submit() {
     isFailed.value = true;
   } finally {
     isSending.value = false;
-    const delay = 1500;
     setTimeout(() => {
       isSent.value = false;
       isFailed.value = false;
