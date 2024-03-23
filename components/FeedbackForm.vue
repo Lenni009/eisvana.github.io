@@ -2,8 +2,12 @@
 import PicoStyle from './PicoStyle.vue';
 import Scale from './Scale.vue';
 import MultipleChoice from './MultipleChoice.vue';
-import { ref } from 'vue';
-// import SubmitButton from './SubmitButton.vue';
+import { ref, reactive, computed } from 'vue';
+import SubmitButton from './SubmitButton.vue';
+import type { FeedbackData } from '../types/formData';
+import { buildFeedbackFormData } from '../logic/createFormData';
+
+const webhook = atob(import.meta.env.VITE_DISCORD_FEEDBACK_WEBHOOK ?? '');
 
 const experience = ref<number>();
 const find = ref<string>();
@@ -31,6 +35,25 @@ const departmentItems = {
   yes: 'Yes',
   no: 'No',
 };
+
+const feedbackData: FeedbackData = reactive({
+  experience,
+  find,
+  enjoy,
+  good,
+  bad,
+  project,
+  departments,
+  structure,
+  home,
+  server,
+  transparency,
+  citizenValue,
+  news,
+  otherFeedback,
+});
+
+const formData = computed(() => buildFeedbackFormData(feedbackData));
 </script>
 
 <template>
@@ -169,6 +192,11 @@ const departmentItems = {
         <textarea v-model="otherFeedback"></textarea>
       </article>
     </div>
+
+    <SubmitButton
+      :webhook
+      :form-data-array="[formData]"
+    />
   </PicoStyle>
 </template>
 

@@ -1,5 +1,5 @@
 import { unref } from 'vue';
-import type { ContactFormParameters } from '../types/formData';
+import type { ContactFormParameters, FeedbackData } from '../types/formData';
 import { escapeFileName } from './fileNameEscape';
 
 export function buildTextFileFormData(content: string, category: string) {
@@ -97,6 +97,102 @@ export function buildMixedFormData(name: string, shortDesc: string, content: str
     })
   );
   if (content) formData.append('content', contentFile);
+
+  return formData;
+}
+
+export function buildFeedbackFormData({
+  experience,
+  find,
+  enjoy,
+  good,
+  bad,
+  project,
+  departments,
+  structure,
+  home,
+  server,
+  transparency,
+  citizenValue,
+  news,
+  otherFeedback,
+}: FeedbackData) {
+  const formData = new FormData();
+
+  formData.append(
+    'payload_json',
+    JSON.stringify({
+      allowed_mentions: {
+        parse: [],
+      },
+      embeds: [
+        {
+          title: 'Feedback Submitted',
+          fields: [
+            {
+              name: 'Rate your overall experience in Eisvana (1-5)',
+              value: unref(experience),
+            },
+            {
+              name: 'How did you find Eisvana?',
+              value: unref(find),
+            },
+            {
+              name: 'What do you enjoy doing in game?',
+              value: unref(enjoy),
+            },
+            {
+              name: 'What does Eisvana do well?',
+              value: unref(good),
+            },
+            {
+              name: 'What could be improved?',
+              value: unref(bad),
+            },
+            {
+              name: 'What kind of project would you participate in?',
+              value: unref(project),
+            },
+            {
+              name: "Do you know about Eisvana's departments?",
+              value: unref(departments),
+            },
+            {
+              name: 'How much do you agree with these statements (1-5)',
+            },
+            {
+              name: "I understand Eisvana's organisational structure",
+              value: unref(structure),
+            },
+            {
+              name: 'I feel "at home" in Eisvana',
+              value: unref(home),
+            },
+            {
+              name: 'Discord server is organised',
+              value: unref(server),
+            },
+            {
+              name: 'Leadership is transparent',
+              value: unref(transparency),
+            },
+            {
+              name: 'Citizens are valued',
+              value: unref(citizenValue),
+            },
+            {
+              name: 'I know about latest projects:',
+              value: unref(news),
+            },
+            {
+              name: 'Other feedback:',
+              value: unref(otherFeedback),
+            },
+          ],
+        },
+      ],
+    })
+  );
 
   return formData;
 }
