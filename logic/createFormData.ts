@@ -101,22 +101,29 @@ export function buildMixedFormData(name: string, shortDesc: string, content: str
   return formData;
 }
 
-export function buildFeedbackFormData({
-  experience,
-  find,
-  enjoy,
-  good,
-  bad,
-  project,
-  departments,
-  structure,
-  home,
-  server,
-  transparency,
-  citizenValue,
-  news,
-  otherFeedback,
-}: FeedbackData) {
+export function buildFeedbackFormData(feedbackData: FeedbackData) {
+  const data: [string, string | number | undefined][] = Object.entries(feedbackData);
+  const cleanedFeedbackData: [string, string | number][] = data.map((item) => [item[0], item[1] || 'No answer given']); // NoSonar I need the check for empty strings
+
+  const cleanedFeedbackDataObj = Object.fromEntries(cleanedFeedbackData);
+
+  const {
+    experience,
+    find,
+    enjoy,
+    good,
+    bad,
+    project,
+    departments,
+    structure,
+    home,
+    server,
+    transparency,
+    citizenValue,
+    news,
+    otherFeedback,
+  } = cleanedFeedbackDataObj;
+
   const formData = new FormData();
 
   formData.append(
