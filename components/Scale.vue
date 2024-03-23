@@ -15,11 +15,12 @@ const onDeselect = (e: Event) => deselect(e, model);
 <template>
   <div class="scale-wrapper">
     <div>{{ low }}</div>
-    <div
+    <label
       v-for="n in 5"
+      :for="`${name}-${n}`"
       class="scale-item"
     >
-      <label :for="`${name}-${n}`">{{ n }}</label>
+      <span>{{ n }}</span>
       <input
         v-model="model"
         :id="`${name}-${n}`"
@@ -28,7 +29,7 @@ const onDeselect = (e: Event) => deselect(e, model);
         type="radio"
         @click="onDeselect"
       />
-    </div>
+    </label>
     <div>{{ high }}</div>
   </div>
 </template>
@@ -44,6 +45,7 @@ const onDeselect = (e: Event) => deselect(e, model);
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 0.5rem;
 
     input {
       margin: 0;
