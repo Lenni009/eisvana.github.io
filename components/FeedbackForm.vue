@@ -53,6 +53,8 @@ const feedbackData: FeedbackData = reactive({
   otherFeedback,
 });
 
+const isFilledOut = computed(() => Object.entries(feedbackData).some((item) => item[1]));
+
 const formData = computed(() => buildFeedbackFormData(feedbackData));
 </script>
 
@@ -194,6 +196,7 @@ const formData = computed(() => buildFeedbackFormData(feedbackData));
     </div>
 
     <SubmitButton
+      v-if="isFilledOut"
       :webhook
       :form-data-array="[formData]"
     />
