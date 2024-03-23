@@ -11,6 +11,9 @@ const props = defineProps<{
   text?: string;
 }>();
 
+const isDev = import.meta.env.DEV;
+const sendRequest = ref(false);
+
 const emit = defineEmits(['success', 'fail']);
 
 const isSending = ref(false);
@@ -19,6 +22,10 @@ const isSent = ref(false);
 const isIncomplete = ref(false);
 
 async function submit() {
+  if (isDev && !sendRequest.value) {
+    console.log(props.formDataArray);
+    return;
+  }
   try {
     if (props.isIncomplete) {
       isIncomplete.value = true;
@@ -63,6 +70,14 @@ const buttonText = computed(() => {
     >
       {{ buttonText }}
     </button>
+    <label v-if="isDev">
+      <input
+        v-model="sendRequest"
+        role="switch"
+        type="checkbox"
+      />
+      <span>Send request</span>
+    </label>
   </PicoStyle>
 </template>
 
