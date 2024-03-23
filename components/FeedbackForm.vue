@@ -2,10 +2,12 @@
 import PicoStyle from './PicoStyle.vue';
 import Scale from './Scale.vue';
 import MultipleChoice from './MultipleChoice.vue';
-import { ref, reactive, computed } from 'vue';
+import { ref, reactive, computed, watchEffect } from 'vue';
 import SubmitButton from './SubmitButton.vue';
+import CharacterCounterTextarea from './CharacterCounterTextarea.vue';
 import type { FeedbackData } from '../types/formData';
 import { buildFeedbackFormData } from '../logic/createFormData';
+import { maxLength } from '../variables/formValidation';
 
 const webhook = atob(import.meta.env.VITE_DISCORD_FEEDBACK_WEBHOOK ?? '');
 
@@ -52,6 +54,8 @@ const feedbackData: FeedbackData = reactive({
   news,
   otherFeedback,
 });
+
+watchEffect(() => (otherFeedback.value = otherFeedback.value?.slice(0, maxLength)));
 
 const isFilledOut = computed(() => Object.entries(feedbackData).some((item) => item[1]));
 
@@ -192,7 +196,7 @@ const formData = computed(() => buildFeedbackFormData(feedbackData));
 
         <article>
           <p class="title">Do you have any other feedback?</p>
-          <textarea v-model="otherFeedback"></textarea>
+          <CharacterCounterTextarea v-model="otherFeedback" />
         </article>
       </div>
 
