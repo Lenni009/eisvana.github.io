@@ -9,6 +9,7 @@ import { compressFile } from '../logic/compressImage';
 import { buildMixedFormData } from '../logic/createFormData';
 import playerHeadText from '../mdTemplates/playerHead.md?raw';
 import medalComponentText from '../mdTemplates/medalComponent.md?raw';
+import { maxLength } from '../variables/formValidation';
 
 const { theme } = useTheme();
 
@@ -115,6 +116,7 @@ function clearInputs() {
       >
       <input
         v-model="name"
+        :maxlength="maxLength"
         id="name-input"
         type="text"
       />
@@ -126,6 +128,7 @@ function clearInputs() {
       >
       <input
         v-model="shortDesc"
+        :maxlength="maxLength"
         id="desc-input"
         type="text"
       />

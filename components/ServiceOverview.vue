@@ -60,7 +60,7 @@ const cards: Card[] = [
   {
     title: 'Anonymous Feedback',
     details: "Do you have any feedback for Eisvana's leadership? Send it here and help us improve!",
-    link: 'https://forms.gle/NRBJ8avd7eeVikBZA',
+    link: './feedback',
     linkText: 'Feedback Form',
   },
 ];
@@ -133,19 +133,20 @@ const isExternalLink = (link: string) => link.startsWith('http');
       }
 
       .link {
-        border-block-start: var(--divider-color);
         display: block;
         text-align: center;
+        border-block-start: var(--divider-color);
+        border-end-end-radius: var(--pico-border-radius);
+        border-end-start-radius: var(--pico-border-radius);
         transition:
           background-color var(--pico-transition),
           color var(--pico-transition),
           text-decoration-color var(--pico-transition);
-        border-end-end-radius: var(--pico-border-radius);
-        border-end-start-radius: var(--pico-border-radius);
 
-        &:hover {
-          background-color: var(--pico-primary-hover-background);
+        &:hover,
+        &:active {
           color: white;
+          background-color: var(--pico-primary-hover-background);
           text-decoration-color: var(--pico-primary-hover-background);
         }
       }

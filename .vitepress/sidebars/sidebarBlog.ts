@@ -8,7 +8,7 @@ export function sidebarBlog(route: string): DefaultTheme.SidebarItem[] {
         { text: 'Home', link: '/' },
         { text: 'Create Blog', link: '/create' },
         {
-          text: "Lenni",
+          text: 'Lenni',
           collapsed: true,
           items: [{ text: 'Building this Website', link: '/lenni/building_this_website' }],
         },

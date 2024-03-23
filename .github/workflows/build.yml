@@ -25,7 +25,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: lts/*
+          node-version: 20.x
 
       - name: Add env vars
         run: |
@@ -37,6 +37,9 @@ jobs:
           echo >> .env
           echo -n 'VITE_DISCORD_COMMUNITY_WEBHOOK=' >> .env
           echo '${{ secrets.DISCORD_COMMUNITY_WEBHOOK }}' | base64 | tr -d "\n\r" >> .env
+          echo >> .env
+          echo -n 'VITE_DISCORD_FEEDBACK_WEBHOOK=' >> .env
+          echo '${{ secrets.DISCORD_FEEDBACK_WEBHOOK }}' | base64 | tr -d "\n\r" >> .env
 
       - name: Build App
         run: |

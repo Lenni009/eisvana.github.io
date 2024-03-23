@@ -2,14 +2,18 @@
 import { computed, ref } from 'vue';
 import { multiRequest } from '../logic/webRequests';
 import PicoStyle from './PicoStyle.vue';
+import { delay } from '../variables/formValidation';
 
 const props = defineProps<{
   webhook: string;
   formDataArray: FormData[];
-  isIncomplete: boolean;
+  isIncomplete?: boolean;
   isBusy?: boolean;
   text?: string;
 }>();
+
+const isDev = import.meta.env.DEV;
+const sendRequest = ref(false);
 
 const emit = defineEmits(['success', 'fail']);
 
@@ -19,6 +23,12 @@ const isSent = ref(false);
 const isIncomplete = ref(false);
 
 async function submit() {
+  if (isDev && !sendRequest.value) {
+    console.log(props.formDataArray);
+    isSent.value = true;
+    emit('success');
+    return;
+  }
   try {
     if (props.isIncomplete) {
       isIncomplete.value = true;
@@ -34,7 +44,6 @@ async function submit() {
     isFailed.value = true;
   } finally {
     isSending.value = false;
-    const delay = 1500;
     setTimeout(() => {
       isSent.value = false;
       isFailed.value = false;
@@ -63,6 +72,14 @@ const buttonText = computed(() => {
     >
       {{ buttonText }}
     </button>
+    <label v-if="isDev">
+      <input
+        v-model="sendRequest"
+        role="switch"
+        type="checkbox"
+      />
+      <span>Send request</span>
+    </label>
   </PicoStyle>
 </template>
 
