@@ -6,7 +6,7 @@ import PicoStyle from './PicoStyle.vue';
 const props = defineProps<{
   webhook: string;
   formDataArray: FormData[];
-  isIncomplete: boolean;
+  isIncomplete?: boolean;
   isBusy?: boolean;
   text?: string;
 }>();
