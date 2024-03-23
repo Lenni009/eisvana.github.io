@@ -133,20 +133,20 @@ const isExternalLink = (link: string) => link.startsWith('http');
       }
 
       .link {
-        border-block-start: var(--divider-color);
         display: block;
         text-align: center;
+        border-block-start: var(--divider-color);
+        border-end-end-radius: var(--pico-border-radius);
+        border-end-start-radius: var(--pico-border-radius);
         transition:
           background-color var(--pico-transition),
           color var(--pico-transition),
           text-decoration-color var(--pico-transition);
-        border-end-end-radius: var(--pico-border-radius);
-        border-end-start-radius: var(--pico-border-radius);
 
         &:hover,
         &:active {
-          background-color: var(--pico-primary-hover-background);
           color: white;
+          background-color: var(--pico-primary-hover-background);
           text-decoration-color: var(--pico-primary-hover-background);
         }
       }
