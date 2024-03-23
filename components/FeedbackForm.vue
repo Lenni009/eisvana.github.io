@@ -173,6 +173,7 @@ function clearInputs() {
 
         <article>
           <p class="title">Eisvana's Discord server is organised</p>
+          <p>You can quickly find the right channel to post something in, or find information quickly</p>
           <Scale
             v-model="server"
             high="Agree"
@@ -235,6 +236,10 @@ function clearInputs() {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+
+  article {
+    container-type: inline-size;
+  }
 
   .title {
     font-weight: bold;
