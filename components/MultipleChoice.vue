@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
+import { deselect } from '../logic/formHelpers';
 
 defineProps<{
   items: Record<string, string>;
@@ -7,18 +8,17 @@ defineProps<{
   other?: boolean;
 }>();
 
-const model = defineModel({ type: String });
-const otherValue = ref("");
+const otherInput = ref<HTMLInputElement | null>(null);
 
-function deselect(e: Event) {
-  const { target } = e;
-  if (!(target instanceof HTMLInputElement)) return;
-  if (model.value === target.value) {
-    model.value = undefined; // NoSonar deselect everything if the currently selected item is clicked
-  }
-}
+const model = defineModel({ type: String });
+const otherValue = ref('');
+
+const onDeselect = (e: Event) => deselect(e, model);
 
 const checkOther = () => (model.value = otherValue.value);
+
+// this only triggers when the radio button is selected, not when it's deselected
+const focusInput = () => otherInput.value?.focus();
 </script>
 
 <template>
@@ -30,7 +30,7 @@ const checkOther = () => (model.value = otherValue.value);
         :name
         :value="item"
         type="radio"
-        @click="deselect"
+        @click="onDeselect"
       />
       <label :for="`${name}-${id}`">{{ item }}</label>
     </div>
@@ -45,17 +45,16 @@ const checkOther = () => (model.value = otherValue.value);
           :name
           :value="otherValue"
           type="radio"
+          @click="onDeselect"
+          @change="focusInput"
         />
-        <label
-          :for="`${name}-other-input`"
-          @click="checkOther"
-          >Other:</label
-        >
+        <label :for="`${name}-other`">Other:</label>
       </div>
       <input
         v-model="otherValue"
         :id="`${name}-other-input`"
         class="input-other"
+        ref="otherInput"
         type="text"
         @input="checkOther"
       />
@@ -76,6 +75,7 @@ const checkOther = () => (model.value = otherValue.value);
 
     .input-other {
       width: auto;
+      flex-grow: 1;
     }
   }
 }
