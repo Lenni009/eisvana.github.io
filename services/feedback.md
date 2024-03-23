@@ -4,8 +4,8 @@ import FeedbackForm from '../components/FeedbackForm.vue';
 
 # Feedback
 
-Here you can give anonymous feedback.
+Give feedback about your experience in Eisvana. This form is intended to highlight pain points that should be improved. All feedback is anonymous.
 
-## Form
+<hr>
 
 <FeedbackForm />
