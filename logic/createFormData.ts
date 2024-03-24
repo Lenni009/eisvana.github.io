@@ -189,7 +189,7 @@ export function buildFeedbackFormData(feedbackData: FeedbackData) {
               value: unref(citizenValue),
             },
             {
-              name: 'I know about latest projects:',
+              name: 'I know about latest projects',
               value: unref(news),
             },
             {
