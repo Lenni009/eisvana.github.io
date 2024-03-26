@@ -2,7 +2,7 @@
 import { MdEditor } from 'md-editor-v3';
 import { useTheme } from '../composables/useTheme';
 
-const {theme} = useTheme();
+const { theme } = useTheme();
 
 interface Props {
   class?: string;
