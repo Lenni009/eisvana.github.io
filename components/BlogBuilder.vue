@@ -1,13 +1,12 @@
 <script setup lang="ts">
 import { ref, computed, watch } from 'vue';
-import { MdEditor } from 'md-editor-v3';
+import MarkdownEditor from './MarkdownEditor.vue';
 import 'md-editor-v3/lib/style.css';
 import SubmitButton from './SubmitButton.vue';
 import { buildImageFormData, buildTextFileFormData } from '../logic/createFormData';
 import { compressFile } from '../logic/compressImage';
 import PicoStyle from './PicoStyle.vue';
 import GalleryElement from './GalleryElement.vue';
-import { useTheme } from '../composables/useTheme';
 import { escapeFileName } from '../logic/fileNameEscape';
 import { maxLength } from '../variables/formValidation';
 
@@ -23,8 +22,6 @@ const imageObjectUrls = ref<string[]>([]);
 const webhook = atob(import.meta.env.VITE_DISCORD_BLOG_WEBHOOK ?? '');
 
 const form = ref<HTMLFormElement | null>(null);
-
-const { theme } = useTheme();
 
 watch(images, (newVal, oldVal) => {
   const newImages = newVal.filter((file) => !oldVal.includes(file));
@@ -152,13 +149,9 @@ const insertImage = (file: File) =>
     </PicoStyle>
 
     <div v-show="category">
-      <MdEditor
+      <MarkdownEditor
         v-model="pageContent"
-        :theme="theme"
-        class="editor"
         editor-id="pageContent"
-        language="en-US"
-        preview-theme="github"
         @on-save="downloadFile"
         @on-upload-img="uploadImg"
       />
@@ -192,10 +185,6 @@ const insertImage = (file: File) =>
 </template>
 
 <style scoped lang="scss">
-.editor {
-  margin-block: 1rem;
-}
-
 .gallery {
   display: flex;
   flex-wrap: wrap;
