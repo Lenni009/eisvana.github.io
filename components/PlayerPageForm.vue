@@ -1,17 +1,14 @@
 <script setup lang="ts">
-import { MdEditor } from 'md-editor-v3';
+import MarkdownEditor from './MarkdownEditor.vue';
 import SubmitButton from './SubmitButton.vue';
 import 'md-editor-v3/lib/style.css';
 import PicoStyle from './PicoStyle.vue';
 import { ref, computed } from 'vue';
-import { useTheme } from '../composables/useTheme';
 import { compressFile } from '../logic/compressImage';
 import { buildMixedFormData } from '../logic/createFormData';
 import playerHeadText from '../mdTemplates/playerHead.md?raw';
 import medalComponentText from '../mdTemplates/medalComponent.md?raw';
 import { maxLength } from '../variables/formValidation';
-
-const { theme } = useTheme();
 
 const webhook = atob(import.meta.env.VITE_DISCORD_COMMUNITY_WEBHOOK ?? '');
 
@@ -149,67 +146,35 @@ function clearInputs() {
     <hr />
 
     <h3>About Me</h3>
-    <MdEditor
+    <MarkdownEditor
       v-model="about"
       :placeholder="placeholders.about"
-      :theme="theme"
-      class="editor"
       editor-id="about"
-      id="about"
-      language="en-US"
-      preview-theme="github"
-      no-highlight
       no-upload-img
-      no-mermaid
-      no-katex
     />
 
     <h3>Gameplay Interests</h3>
-    <MdEditor
+    <MarkdownEditor
       v-model="interests"
       :placeholder="placeholders.interests"
-      :theme="theme"
-      class="editor"
       editor-id="interests"
-      id="interests"
-      language="en-US"
-      preview-theme="github"
-      no-highlight
       no-upload-img
-      no-mermaid
-      no-katex
     />
 
     <h3>Departments</h3>
-    <MdEditor
+    <MarkdownEditor
       v-model="departments"
       :placeholder="placeholders.departments"
-      :theme="theme"
-      class="editor"
       editor-id="departments"
-      id="departments"
-      language="en-US"
-      preview-theme="github"
-      no-highlight
       no-upload-img
-      no-mermaid
-      no-katex
     />
 
     <h3>Contact</h3>
-    <MdEditor
+    <MarkdownEditor
       v-model="contact"
       :placeholder="placeholders.contact"
-      :theme="theme"
-      class="editor"
       editor-id="contact"
-      id="contact"
-      language="en-US"
-      preview-theme="github"
-      no-highlight
       no-upload-img
-      no-mermaid
-      no-katex
     />
 
     <SubmitButton
@@ -224,19 +189,9 @@ function clearInputs() {
 </template>
 
 <style scoped lang="scss">
-.editor {
-  margin-block-end: 1rem;
-}
-
 .required::after {
   color: red;
   content: '*';
   margin-inline-start: 0.25rem;
-}
-
-.success {
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin-block-start: 2rem;
 }
 </style>

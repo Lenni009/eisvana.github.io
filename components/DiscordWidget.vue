@@ -5,12 +5,14 @@ const { theme } = useTheme();
 </script>
 
 <template>
-  <iframe
-    :src="`https://discord.com/widget?id=812176491617976330&theme=${theme}`"
-    class="discord-widget"
-    sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"
-    title="Eisvana's Discord"
-  ></iframe>
+  <ClientOnly>
+    <iframe
+      :src="`https://discord.com/widget?id=812176491617976330&theme=${theme}`"
+      class="discord-widget"
+      sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"
+      title="Eisvana's Discord"
+    ></iframe>
+  </ClientOnly>
 </template>
 
 <style scoped lang="scss">
