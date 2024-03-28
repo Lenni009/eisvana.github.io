@@ -12,6 +12,11 @@ export function sidebarBlog(route: string): DefaultTheme.SidebarItem[] {
           collapsed: true,
           items: [{ text: 'Building this Website', link: '/lenni/building_this_website' }],
         },
+        {
+          text: 'YucaFrita',
+          collapsed: true,
+          items: [{ text: 'Greetings Eisvana!', link: '/yucafrita/greetings' }],
+        },
       ],
     },
   ];
