@@ -1,1 +1,0 @@
-const s={avatar:"lenni.png",name:"Lenni",desc:"Eisvana's Director and Head Scholar",pageLink:"./Lenni"},t=e=>typeof e=="object"&&e!==null;function a(e){const r=["avatar","name"];return t(e)?r.every(n=>n in e):!1}const i=Object.assign({"./members/1_lenni.ts":s}),c=Object.values(i),o=c.filter(a),l=o;export{l as e};
