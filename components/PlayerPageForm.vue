@@ -3,18 +3,21 @@ import MarkdownEditor from './MarkdownEditor.vue';
 import SubmitButton from './SubmitButton.vue';
 import 'md-editor-v3/lib/style.css';
 import PicoStyle from './PicoStyle.vue';
-import { ref, computed } from 'vue';
+import { ref, computed, watch } from 'vue';
 import { compressFile } from '../logic/compressImage';
 import { buildMixedFormData } from '../logic/createFormData';
 import playerHeadText from '../mdTemplates/playerHead.md?raw';
 import medalComponentText from '../mdTemplates/medalComponent.md?raw';
 import { maxLength } from '../variables/formValidation';
+import CommunityMemberCard from './CommunityMemberCard.vue';
+import type { EisvanaMember } from '../types/member';
 
 const webhook = atob(import.meta.env.VITE_DISCORD_COMMUNITY_WEBHOOK ?? '');
 
 const name = ref('');
 const shortDesc = ref('');
 const profilePic = ref<File | null>(null);
+const profilePicUrl = ref('');
 const about = ref('');
 const interests = ref('');
 const departments = ref('');
@@ -32,6 +35,12 @@ const form = ref<HTMLFormElement | null>(null);
 
 const isIncomplete = computed(() => !name.value || !profilePic.value || !shortDesc.value);
 const getsFullPage = computed(() => Boolean(about.value || interests.value || departments.value || contact.value));
+
+watch(profilePic, (newVal) => {
+  URL.revokeObjectURL(profilePicUrl.value);
+
+  profilePicUrl.value = newVal ? URL.createObjectURL(newVal) : '';
+});
 
 const formData = computed(getFormData);
 
@@ -98,6 +107,12 @@ function clearInputs() {
   departments.value = '';
   contact.value = '';
 }
+
+const member = computed<EisvanaMember>(() => ({
+  avatar: profilePicUrl.value,
+  name: name.value,
+  desc: shortDesc.value,
+}));
 </script>
 
 <template>
@@ -143,6 +158,11 @@ function clearInputs() {
       />
     </PicoStyle>
 
+    <div>Preview:</div>
+    <CommunityMemberCard
+      :eisvana-members="[member]"
+      size="small"
+    />
     <hr />
 
     <h3>About Me</h3>
