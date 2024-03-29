@@ -62,9 +62,9 @@ ${interests.value}
 
 ${departments.value}
 
-## Medals
+<!-- ## Medals
 
-${medalComponentText.trim()}
+${medalComponentText.trim()} -->
 
 ## Contact
 
