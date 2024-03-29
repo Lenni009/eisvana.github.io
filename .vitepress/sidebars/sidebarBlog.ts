@@ -17,6 +17,11 @@ export function sidebarBlog(route: string): DefaultTheme.SidebarItem[] {
           collapsed: true,
           items: [{ text: 'Greetings Eisvana!', link: '/yucafrita/greetings' }],
         },
+        {
+          text: 'Agent Bahann',
+          collapsed: true,
+          items: [{ text: 'A New World?', link: '/bahann/new_world' }],
+        },
       ],
     },
   ];
