@@ -1,0 +1,3 @@
+# A New World? 
+
+I find myself dreaming of a new space... I am in a new space... What is this realm materializing in front of my eyes? It feels familiar. A ship? I need to find a ship and fix it? What did I get myself into...

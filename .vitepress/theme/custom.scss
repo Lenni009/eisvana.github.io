@@ -41,6 +41,7 @@ html {
   aspect-ratio: 16 / 9;
 }
 
+.edit-info .last-updated,
 .edit-info:not(:has(a)) {
   display: none !important;
 }
