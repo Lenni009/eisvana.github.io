@@ -69,7 +69,7 @@ export function buildMixedFormData(name: string, shortDesc: string, content: str
   const contentFile = new File([content], `${escapeFileName(name)}.md`, { type: 'text/plain' });
   const formData = new FormData();
 
-  formData.append('image', file);
+  formData.append('files[0]', file);
   formData.append(
     'payload_json',
     JSON.stringify({
@@ -92,6 +92,12 @@ export function buildMixedFormData(name: string, shortDesc: string, content: str
               value: '```' + shortDesc + '```',
             },
           ],
+        },
+      ],
+      attachments: [
+        {
+          id: 0,
+          filename: file.name,
         },
       ],
     })
