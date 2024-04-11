@@ -8,14 +8,14 @@
   },
   "dependencies": {
     "@picocss/pico": "^2.0.0",
-    "md-editor-v3": "^4.12.3",
+    "md-editor-v3": "^4.13.0",
     "simple-image-compressor": "^1.1.0",
-    "vitepress": "^1.0.1",
+    "vitepress": "^1.0.2",
     "vue3-youtube": "^0.1.9"
   },
   "devDependencies": {
     "prettier": "^3.2.4",
-    "sass": "^1.70.0",
-    "vue-tsc": "^2.0.7"
+    "sass": "^1.74.1",
+    "vue-tsc": "^2.0.11"
   }
 }
