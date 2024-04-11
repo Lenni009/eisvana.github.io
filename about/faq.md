@@ -45,7 +45,7 @@ You can use the [Eisvana System Naming Tools](https://eisvana.github.io/Eisvana-
 
 ## How do I become a Citizen?
 
-Fill out our [census form](https://forms.gle/A85N3NkYXkM5XXjx5) and post a screenshot of your base in the **#eisvana-bases-farms** Discord channel. You will be notified once your census entry has been created.
+Fill out our [census form](https://census.eisvana.com/form.html). You will be notified once your census entry has been created.
 
 ## I am a Citizen. What now?
 
