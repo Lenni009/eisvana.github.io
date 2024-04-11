@@ -16,9 +16,9 @@ const cards: Card[] = [
     linkText: 'System Naming Tools',
   },
   {
-    title: 'Register a new Base for the Census',
-    details: 'New citizen or just moving somewhere else? No problem! Just fill out the form and let us know!',
-    link: 'https://forms.gle/A85N3NkYXkM5XXjx5',
+    title: 'Register for the Census',
+    details: 'Want to become an official citizen of Eisvana? No problem! Just fill out the form and let us know!',
+    link: 'https://census.eisvana.com/form.html',
     linkText: 'Census Form',
   },
   {
@@ -52,10 +52,10 @@ const cards: Card[] = [
     linkText: 'Random Eisvana Glyphs',
   },
   {
-    title: 'Renew Census',
-    details: 'The census resets every year.\nRenew your entry here!',
-    link: 'https://eisvana.github.io/Eisvana-Census-Renew',
-    linkText: 'Renew Census Entry',
+    title: 'Change or Update Census Base',
+    details: 'You can update your census base, or define a new base to be listed on the census!',
+    link: 'https://census.eisvana.com/table.html',
+    linkText: 'Census Table',
   },
   {
     title: 'Anonymous Feedback',

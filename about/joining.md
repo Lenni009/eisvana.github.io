@@ -41,11 +41,7 @@ Please respect our [rules](./rules) for bases.
 
 ## Fill out the Census
 
-When you have built and uploaded your base, you are ready to fill out our [census form](https://forms.gle/A85N3NkYXkM5XXjx5).
-
-## Share Your Base on Discord
-
-As the final step, take a picture of your base and send it into the **#eisvana-bases-farms** channel in our Discord server. Your census entry cannot be created without a picture of the base.
+When you have built and uploaded your base, you are ready to fill out our [census form](https://census.eisvana.com/form.html).
 
 ## After becoming a Citizen
 
