@@ -1,6 +1,8 @@
 import { HeadConfig } from 'vitepress';
 
 export const head: HeadConfig[] = [
+  ['meta', { name: 'application-name', content: 'Eisvana' }],
+  ['meta', { name: 'keywords', content: "Eisvana, No Man's Sky, Civilization, Civilized Space, Wiki, Community, NMS, Civ, Eissentam, Fade" }],
   ['meta', { name: 'theme-color', content: '#280033' }],
   ['meta', { name: 'msapplication-config', content: '/icons/browserconfig.xml' }],
   ['meta', { name: 'msapplication-TileColor', content: '#280033' }],

@@ -45,3 +45,9 @@ html {
 .edit-info:not(:has(a)) {
   display: none !important;
 }
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}

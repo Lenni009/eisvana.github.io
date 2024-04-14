@@ -5,7 +5,7 @@ import { escapeFileName } from './fileNameEscape';
 export async function compressFile(inputFile: File, quality: number = 1): Promise<File> {
   const sanitisedFileName = escapeFileName(inputFile.name);
   const file = new File([inputFile], sanitisedFileName, { type: inputFile.type });
-  if (file.size < maxSize) return file; // if below 25 MB, don't do anything
+  if (file.size < maxSize) return file; // if below 2 MB, don't do anything
   const type = imageTypes.WEBP;
   const newFileExtension = type.split('/').at(-1);
   const res = await compressImage(file, {
