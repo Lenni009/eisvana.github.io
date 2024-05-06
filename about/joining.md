@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Youtube from 'vue3-youtube';
+import Youtube from '../components/YouTube.vue';
 </script>
 
 # How to Join
@@ -10,7 +10,7 @@ Eisvana is located at the edge of Eissentam, the 10th galaxy.
 
 Before you attempt getting here, make sure you are in Eissentam. If you are not yet in Eissentam, you can look at the featured bases in the teleporter in the anomaly. Often there is a base in Eissentam that you can teleport to.
 
-<Youtube class="embed" src="https://youtube.com/embed/bwMEYm6ZnuE" />
+<Youtube src="https://youtube.com/embed/bwMEYm6ZnuE" />
 
 ### Capital
 

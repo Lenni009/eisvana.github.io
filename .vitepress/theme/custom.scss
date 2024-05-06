@@ -34,13 +34,6 @@ html {
   }
 }
 
-.embed,
-.embed iframe {
-  width: 100% !important;
-  height: auto !important;
-  aspect-ratio: 16 / 9;
-}
-
 .edit-info .last-updated,
 .edit-info:not(:has(a)) {
   display: none !important;
