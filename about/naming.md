@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Youtube from 'vue3-youtube';
+import Youtube from '../components/YouTube.vue';
 </script>
 
 # Naming Guidelines
@@ -32,4 +32,4 @@ If you are not sure whether you are doing it correctly, ask in the [Eisvana Disc
 
 ## Video
 
-<Youtube class="embed" src="https://youtu.be/NVvuGCMsKGg" />
+<Youtube src="https://youtu.be/NVvuGCMsKGg" />
