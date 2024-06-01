@@ -1,5 +1,15 @@
 # News
 
+## Census Management Tool (17 April 2024)
+
+Our new Census Management Tool is now live. It is probably *the* most advanced census tool in all of civilized space, allowing for applications, updates and renewals all from within one app, and without the user ever having to directly interact with the wiki. And the best part: It's fully open source, so other civs can use it as well if they want to. The data for all citizens is queried from the wiki API. The forms are submitted to Discord as a text file, which can directly be copy-pasted into the wiki.
+
+## Eisvana Website Launches (27 March 2024)
+
+We have moved our most important documentation and forms to our own website. This streamlines processes like applications and feedback, and makes us independent from big companies like Google (all Google forms that were used in the past are now deprecated and have been moved to our own form system).
+
+The website should be a place to easily find info regarding Eisvana, and to quickly navigate to our various apps.
+
 ## New Leadership Role: Managers (2 January 2024)
 
 To add another layer of leadership below the Bridge Crew, the "Manager" position is created. The idea is to split each department and other sections of Eisvana into smaller chunks, which can then be overseen by one or potentially multiple people.
