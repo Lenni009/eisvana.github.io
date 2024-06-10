@@ -10,7 +10,7 @@
     "@picocss/pico": "^2.0.0",
     "md-editor-v3": "^4.15.6",
     "simple-image-compressor": "^1.8.2",
-    "vitepress": "^1.2.2"
+    "vitepress": "^1.2.3"
   },
   "devDependencies": {
     "prettier": "^3.3.0",
