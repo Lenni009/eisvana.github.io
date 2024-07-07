@@ -18,6 +18,9 @@ export default defineConfig({
       lazyLoading: true,
     },
   },
+  sitemap: {
+    hostname: 'https://eisvana.com',
+  },
   lastUpdated: true,
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
