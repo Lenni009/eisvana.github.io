@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "@picocss/pico": "^2.0.0",
-    "md-editor-v3": "^4.17.0",
+    "md-editor-v3": "^4.17.3",
     "simple-image-compressor": "^1.8.2",
     "vitepress": "^1.2.3"
   },
