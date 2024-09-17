@@ -9,6 +9,7 @@ import PicoStyle from './PicoStyle.vue';
 import GalleryElement from './GalleryElement.vue';
 import { escapeFileName } from '../logic/fileNameEscape';
 import { maxLength } from '../variables/formValidation';
+import { maxFilesPerMessage, maxMessageSize } from '../variables/fileCompression';
 
 const pageContent = ref('# Hello World\n\nThis is content');
 const images = ref<File[]>([]);
@@ -50,14 +51,30 @@ const textFormData = computed<FormData>(() => buildTextFileFormData(pageContent.
 const formData = computed<FormData[]>(() => [textFormData.value, ...imageFormData.value]);
 
 function paginate(arr: File[]) {
-  const size = 10; // maximum amount of files in one Discord message
-  return arr.reduce((acc: File[][], val, i) => {
-    const idx = Math.floor(i / size);
-    const page = (acc[idx] ??= []);
-    page.push(val);
+  // sort by filesize; descending (largest first, smallest last)
+  const sortedFiles = arr.toSorted((a, b) => b.size - a.size);
 
-    return acc;
-  }, []);
+  const chunks: File[][] = [];
+  let currentChunk: File[] = [];
+  let currentSize = 0;
+
+  for (const file of sortedFiles) {
+    if (currentChunk.length < maxFilesPerMessage && currentSize + file.size < maxMessageSize) {
+      // add the file to the current chunk
+      currentChunk.push(file);
+      currentSize += file.size;
+    } else {
+      // start a new chunk
+      chunks.push(currentChunk);
+      currentChunk = [file];
+      currentSize = file.size;
+    }
+  }
+
+  // add the last chunk if it's not empty
+  if (currentChunk.length) chunks.push(currentChunk);
+
+  return chunks;
 }
 
 const renameFile = (file: File, name: string) => new File([file], name, { type: file.type });
