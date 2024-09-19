@@ -10,19 +10,19 @@ Eisvana is located at the edge of Eissentam, the 10th galaxy.
 
 Before you attempt getting here, make sure you are in Eissentam. If you are not yet in Eissentam, you can look at the featured bases in the teleporter in the anomaly. Often there is a base in Eissentam that you can teleport to.
 
-<Youtube src="https://youtube.com/embed/bwMEYm6ZnuE" />
+<Youtube src="https://youtu.be/bwMEYm6ZnuE" />
 
 ### Capital
 
-Eisvana's capital system with our capital planet [Accordia](https://nomanssky.fandom.com/wiki/Accordia) is located at this address:
+Eisvana's capital system with our capital planet [New Accordia](https://nomanssky.fandom.com/wiki/New_Accordia) is located at this address:
 
 **Glyphs**
 
-<span class="glyphs">405EA21107FF</span>
+<span class="glyphs">406CA21107FF</span>
 
 **Coordinates**
 
-0FFE:0021:090F:005E
+0FFE:0021:090F:006C
 
 ### Regions
 

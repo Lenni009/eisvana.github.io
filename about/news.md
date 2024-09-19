@@ -1,8 +1,41 @@
 # News
 
+## Eisvana's First Anniversary (18 September 2024)
+
+Eisvana turns one year old today! We have achieved a lot in the past year. We discovered all our star systems, started several building projects and colonies, made our own web apps, added more ways for our citizens to contribute, the list goes on. And we also managed to become one of the biggest civilizations in Eissentam within this year, with over 50 registered citizens! Eisvana stands for community involvement. All these achievements wouldn't have been possible without our awesome community! Thanks to everyone who's part of Eisvana! There are still a lot of ideas floating around, probably enough to fill the next 10 years! Onto a successful second year!
+
+## New Capital Planet (18 September 2024)
+
+The Worlds Part I update turned our old capital planet Accordia into a purple swamp. After a lot of searching, we voted on a new capital planet: [New Accordia](https://nomanssky.fandom.com/wiki/New_Accordia)! The planet can be found at this address: <span class="glyphs">406CA21107FF</span>
+
+## Embassy Planet (18 September 2024)
+
+Eisvana now has an official embassy planet: [Avalonis](https://nomanssky.fandom.com/wiki/Avalonis). Ambassadors from other civilizations and communities are encouraged to build their embassy on this planet or in the surrounding region "Imnito", which acts as our embassy region.
+
+The planet took the second place in the capital planet vote. To not leave it unused, we decided to turn it into our embassy planet.
+
+## Themed Regions (18 September 2024)
+
+In order to better tie our lore and regions together, we are introducing regional themes! Each region also has a regional centre system that hosts something special related to the region's theme. We're starting with three regions, but it's planned to expand this to the other regions as well.
+
+The themes do not strictly dictate what happens in a specific region, but rather set a rough guideline for worldbuilding purposes. So for example, if we declare a region as a "farming" region, farms can still be built outside of that region, and bases that aren't farms can also still be built in that region. But if you want to build a farm and don't know where, this might be a good guidance to narrow down the location.
+
+| Region   | Theme   | Theme Description                           | Regional Centre                                                    |
+| -------- | ------- | ------------------------------------------- | ------------------------------------------------------------------ |
+| Flinus   | Lore    | Lore-relevant builds (Beetle shrines, etc.) | EV1-10 Dabri                                                       |
+| Imnito   | Embassy | Other civilizations' embassies              | [EV2-5D Veridia](https://nomanssky.fandom.com/wiki/EV2-5D_Veridia) |
+| Cuynteto | Capital | Most populated region                       | [EV5-6C Clarity](https://nomanssky.fandom.com/wiki/EV5-6C_Clarity) |
+
+## Atlas App (18 September 2024)
+
+All star systems in Eisvana are discovered since 22 July 2024. To get a better overview over how much and what has been discovered where, when and by whom, we made a new web app: The [Atlas App](https://eisvana.github.io/Eisvana-Discovery-Data).
+It lists all star systems, planets, creatures, minerals, plants, settlements and bases, as well as their discoverer and the discovery date. The data can also be filtered.
+And on top of that, it also shows detailed statistics and charts made from this data. For example who discovered the most, when have the most discoveries been made, or how successful we are at properly renaming systems.
+The data will be continuously updated.
+
 ## Census Management Tool (17 April 2024)
 
-Our new Census Management Tool is now live. It is probably *the* most advanced census tool in all of civilized space, allowing for applications, updates and renewals all from within one app, and without the user ever having to directly interact with the wiki. And the best part: It's fully open source, so other civs can use it as well if they want to. The data for all citizens is queried from the wiki API. The forms are submitted to Discord as a text file, which can directly be copy-pasted into the wiki.
+Our new [Census Management Tool](https://eisvana.github.io/Eisvana-Census) is now live. It is probably _the_ most advanced census tool in all of civilized space, allowing for applications, updates and renewals all from within one app, and without the user ever having to directly interact with the wiki. And the best part: It's fully open source, so other civs can use it as well if they want to. The data for all citizens is queried from the wiki API. The forms are submitted to Discord as a text file, which can directly be copy-pasted into the wiki.
 
 ## Eisvana Website Launches (27 March 2024)
 
@@ -21,7 +54,7 @@ A paradise planet is wanted for a new EBC project with the working title "Specia
 
 ## Census Reset (1 January 2024)
 
-As every year, the census resets on the first of January. This year, we are using a new the [Eisvana Census Renew](https://eisvana.github.io/Eisvana-Census-Renew/) web app to give our citizens the possibility to renew their census entries.
+As every year, the census resets on the first of January. This year, we are using a new the [Eisvana Census Renew](https://eisvana.github.io/Eisvana-Census/renew.html) web app to give our citizens the possibility to renew their census entries.
 
 ## Eisvana Reaches Double Hub-Status (11 December 2023)
 

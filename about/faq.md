@@ -13,15 +13,15 @@ Eisvana is a civilization, a region in space where players meet and play togethe
 
 ## Where is Eisvana?
 
-Our capital planet, [Accordia](https://nomanssky.fandom.com/wiki/Accordia), is located at the following coordinates in EV5:
+Our capital planet, [New Accordia](https://nomanssky.fandom.com/wiki/New_Accordia), is located at the following coordinates in EV5:
 
 **Glyphs**
 
-<span class="glyphs">51EEFA557C30</span>
+<span class="glyphs">406CA21107FF</span>
 
 **Coordinates**
 
-0FFE:0021:090F:005E
+0FFE:0021:090F:006C
 
 ---
 

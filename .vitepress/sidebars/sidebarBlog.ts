@@ -10,7 +10,10 @@ export function sidebarBlog(route: string): DefaultTheme.SidebarItem[] {
         {
           text: 'Lenni',
           collapsed: true,
-          items: [{ text: 'Building this Website', link: '/lenni/building_this_website' }],
+          items: [
+            { text: '1st Anniversary', link: '/lenni/anniversary' },
+            { text: 'Building this Website', link: '/lenni/building_this_website' },
+          ],
         },
         {
           text: 'YucaFrita',
