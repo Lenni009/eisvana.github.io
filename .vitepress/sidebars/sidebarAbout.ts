@@ -8,6 +8,7 @@ export function sidebarAbout(route: string): DefaultTheme.SidebarItem[] {
       items: [
         { text: 'About Eisvana', link: '/' },
         { text: 'Discord', link: '/discord' },
+        { text: 'How to Reach Eisvana', link: '/journey' },
         { text: 'How to Join', link: '/joining' },
         { text: 'News', link: '/news' },
         { text: 'FAQ', link: '/faq' },
